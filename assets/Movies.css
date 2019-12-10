@@ -1,0 +1,7 @@
+.movieposter{
+  display: block;
+  float:left;
+  overflow: auto;
+  margin:10px;
+
+}

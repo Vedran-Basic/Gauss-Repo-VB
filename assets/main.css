@@ -39,3 +39,14 @@ html {
   background-color: #35495e;
 }
 
+.navbar{
+  display: block;
+  overflow:auto;
+  align-content: center;
+}
+
+.container{
+  margin-left: 5%;
+  margin-right: 5%;
+  border: 5px solid red;
+}

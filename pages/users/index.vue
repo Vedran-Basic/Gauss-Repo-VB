@@ -10,7 +10,6 @@
 </template>
 
 
-
 <script>
   export default {
     data() {
@@ -22,7 +21,8 @@
       onLoadUser() {
         this.$router.push('/users/' + this.userID)
       }
-    }
+    },
   }
+
 
 </script>
