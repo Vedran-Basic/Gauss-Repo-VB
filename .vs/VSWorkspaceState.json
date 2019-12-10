@@ -1,10 +1,13 @@
 {
   "ExpandedNodes": [
     "",
+    "\\components",
+    "\\layouts",
     "\\pages",
-    "\\pages\\users",
-    "\\pages\\users\\_id"
+    "\\pages\\users\\_id",
+    "\\pages\\_about",
+    "\\pages\\_movies"
   ],
-  "SelectedNode": "\\pages\\users\\_id\\index.vue",
+  "SelectedNode": "\\components\\header.vue",
   "PreviewInSolutionExplorer": false
 }

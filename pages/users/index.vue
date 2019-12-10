@@ -1,16 +1,14 @@
 <template>
   <div>
-    <h1>
-      Users view
-    </h1>
-    <p>
-      <a href="..">Home</a> <!-- Je li href za root page ..? -->
-    </p>
-    <br />
-    <input type="text" v-model="userID">
-    <button @click="onLoadUser"> Load User</button>
+    <div id="LoadUserButton">
+      Enter a username:
+      <input type="text" v-model="userID">
+      <button @click="onLoadUser"> Load User</button>
+      <nuxt-child />
+    </div>
   </div>
 </template>
+
 
 
 <script>

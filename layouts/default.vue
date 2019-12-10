@@ -1,8 +1,25 @@
 <template>
   <div>
+    <header>
+      <nav>
+        <ul>
+          <li> <a href=".."> Home </a></li>
+          <li> <a href="/about"> About </a></li>
+        </ul>
+      </nav>
+    </header>
     <nuxt />
   </div>
 </template>
+
+<script>
+  import header from '~/components/header.vue'
+  export default {
+    components: {
+      header
+    }
+  }
+</script>
 
 <style>
 html {
