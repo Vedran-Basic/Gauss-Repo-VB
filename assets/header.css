@@ -1,41 +1,49 @@
-  nav {
+nav {
+  display: block;
+  width: auto;
+  overflow: hidden;
+  margin: 0 auto;
+  text-align: center;
+  height: 200px;
+  border: double black;
+  padding: 20px;
+}
+.topnav {
+  padding: 0;
+  margin: 0;
+  display: inline-block;
+  justify-content: center;
+}
 
-    width: auto;
-    overflow: hidden;
-    margin: 0 auto;
-    text-align: center;
-    background-image: url("/components/HeaderPic.jpg");
+.navbar-item {
+  padding: 0;
+  float: left;
+  text-align: center;
+  justify-content: center;}
 
+nav a {
+  margin: 20px;
+  width: 150px;
+  display: inline-block;
+  text-decoration: none;
+  text-align: center;
+  justify-content:center;
+  background-color: rgba(0, 148, 255, 0.35);
+  font-size: 20px;
+  color: white;
+  padding: 20px 10px;
+
+}
+
+  nav a:hover {
+    background-color: rgba(0, 148, 255,0.7);
+    color: lightgoldenrodyellow;
   }
 
-  ul {
-    padding: 0;
-    margin: 0;
-    list-style: none;
-    display:inline-block;
-
-  }
-
-  li {
-    float: left;
-    text-align: center;
-
-  }
-
-  nav a {
-    margin: 20px;
-    width: 150px;
-    display: block;
-    text-decoration: none;
-    text-align: center;
-    background-color: royalblue;
-    font-size: 20px;
-    color: white;
-    padding: 20px 10px;
-
-  }
-  .navbar{
-    border: black solid 1px;
-  
-  }
-
+.navbar-container {
+  background-image: url('~assets/pictures/HeaderPic.jpg');
+  background-position: top;
+  background-size: cover;
+  height: 100%;
+  overflow: auto;
+}

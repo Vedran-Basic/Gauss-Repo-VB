@@ -46,6 +46,9 @@ html {
 }
 
 .container{
+  display:flex;
+  justify-content:center;
+  align-items:center;
   margin-left: 5%;
   margin-right: 5%;
   border: 5px solid red;

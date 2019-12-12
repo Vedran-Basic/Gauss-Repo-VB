@@ -3,10 +3,11 @@
     "",
     "\\assets",
     "\\components",
-    "\\layouts",
+    "\\components\\Movies",
     "\\pages",
-    "\\pages\\movies"
+    "\\pages\\movies",
+    "\\pages\\movies\\_id"
   ],
-  "SelectedNode": "\\layouts\\default.vue",
+  "SelectedNode": "\\pages\\movies\\index.vue",
   "PreviewInSolutionExplorer": false
 }

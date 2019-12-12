@@ -1,19 +1,17 @@
 <template>
   <header>
-    <div class="bg-image">
-      <div class="navbar-container">
+      <div class="navbar-container" >
         <nav>
-          <ul class="topnav">
-            <li> <a href=".."> Home </a></li>
-            <li> <a href="/movies"> Movies </a> </li>
-            <li> <a href="/about"> About </a></li>
-          </ul>
+          <div class="topnav">
+            <div class="navbar-item"> <a href=".."> Home </a></div>
+            <div class="navbar-item"> <a href="/movies"> Movies </a> </div>
+            <div class="navbar-item"> <a href="/about"> About </a></div>
+          </div>
         </nav>
       </div>
-    </div>
   </header>
 </template>
 
-<style>
-@import "~/assets/header.css"
+<style scoped>
+@import "~/assets/header.css";
 </style>

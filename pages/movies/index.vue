@@ -1,39 +1,21 @@
 <template>
   <div class="container">
-    <div class="MoviePoster">
-      <img src="../../components/slap.jpg" />
-    </div>
-    <div class="MoviePoster">
-      <img src="../../components/slap.jpg" />
-    </div>
-    <div class="MoviePoster">
-      <img src="../../components/slap.jpg" />
-    </div>
-    <div class="MoviePoster">
-      <img src="../../components/slap.jpg" />
-    </div>
-    <div class="MoviePoster">
-      <img src="../../components/slap.jpg" />
-    </div>
-    <div class="MoviePoster">
-      <img src="../../components/slap.jpg" />
-    </div>
-    <div class="MoviePoster">
-      <img src="../../components/slap.jpg" />
-    </div>
+    <section class="featured-movies">
+      <MoviePreview id="1"  thumbnail="/assets/pictures/slap.jpg" title="oof" previewText="Get slapped! - documentary movie about slapping" />
+
+    </section>
   </div>
 </template>
 
-<style>
-/* include a css class MoviePoster*/
-.MoviePoster{
-  width: 200px;
-  height: 200px;
-  float:left;
-  margin: 50px;
-  overflow:hidden;
-}
-  img{
-    width: inherit;
+<style scoped>
+
+  .featured-movies {
+    display: flex;
+    padding: 20px;
+    box-sizing: border-box;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
   }
+
 </style>
