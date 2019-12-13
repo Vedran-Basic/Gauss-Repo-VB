@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+    <searchbar searchText="123"/>
     <section class="featured-movies">
       <movie-preview v-for="item in data.Search" :key="item.imdbID"  :movie-instance="item"/>
     </section>
@@ -8,17 +9,21 @@
 
 <script>
   import MoviePreview from "~/components/Movies/MoviePreview"
+  import searchbar from "~/components/searchbar"
+
 
   export default{
     components: {
-      MoviePreview
+      MoviePreview,
+      searchbar
     },
+
     async asyncData({ params, $axios }) {
       let { data } = await $axios.get('http://www.omdbapi.com/?apikey=dd5fbf0a&s=Batman}')
       return {data}
     },
     created(){
-      console.log(this.data);
+     
     }
   }
 

@@ -14,12 +14,10 @@
 
   export default {
     name: 'MoviePreview',
-
     props: {
       movieInstance : Object
   }
-
-    }
+}
   
 
 </script>
