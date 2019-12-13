@@ -8,9 +8,24 @@
         </a>
       </div>
       <nuxt-link to="/users">Users - Single Page App</nuxt-link>
+
+      <p>
+        {{ Title }}
+      </p>
+
+
     </div>
   </div>
 </template>
+
+<script>
+  export default {
+    async asyncData({ params }) {
+      const { data } = await axios.get('http://www.omdbapi.com/?apikey=dd5fbf0a&s=Batman}')
+      return { title: data.Title }
+    }
+  }
+</script>
 
 <style>
   .container {

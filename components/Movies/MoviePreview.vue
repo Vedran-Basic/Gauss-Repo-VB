@@ -1,5 +1,5 @@
 <template>
-  <nuxt-link :to="'/Movies/' + id"class="movie-preview">
+  <nuxt-link :to="'/movies/' + id" class="movie-preview">
     <article class="movie-preview">
       <div class="movie-thumbnail" :style="{backgroundImage: 'url(' + thumbnail + ')' }" ></div>
       <div class="movie-content">
@@ -27,7 +27,7 @@
         type: String,
         required: true
       },
-      thumbnail{
+      thumbnail: {
         type: String,
         required: true
       }
