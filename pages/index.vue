@@ -10,7 +10,7 @@
       <nuxt-link to="/users">Users - Single Page App</nuxt-link>
 
       <p>
-        {{ Title }}
+        {{ data.Search[0].Title }}
       </p>
 
 
@@ -20,9 +20,14 @@
 
 <script>
   export default {
-    async asyncData({ params }) {
-      const { data } = await axios.get('http://www.omdbapi.com/?apikey=dd5fbf0a&s=Batman}')
-      return { title: data.Title }
+    async asyncData({ params, $axios }) {
+      const { data } = await $axios.get('http://www.omdbapi.com/?apikey=dd5fbf0a&s=Batman}')
+      console.log(data);
+      
+      return {data}
+    },
+    created(){
+      console.log(this.data);
     }
   }
 </script>

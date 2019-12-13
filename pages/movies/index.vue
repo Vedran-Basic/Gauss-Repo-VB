@@ -1,47 +1,24 @@
 <template>
   <div class="container">
     <section class="featured-movies">
-      <!--
-  <MoviePreview id="1" thumbnail="~assets/pictures/slap.jpg" title="oof" previewText="Get slapped! - documentary movie about slapping" />
-      ' + thumbnail + ' -->
-      <img src="~assets/pictures/slap.jpg" />
-
-      <nuxt-link :to="'/movies/' + 1" class="movie-preview">
-        <article class="movie-preview">
-          <div class="movie-thumbnail" style="background-image: url('/assets/pictures/slap.jpg')"></div>
-          <div class="movie-content">
-            <h1> opa</h1>
-            <p> wopa </p>
-          </div>
-        </article>
-      </nuxt-link>
-
+      <movie-preview v-for="item in data.Search" :key="item.imdbID"  :movie-instance="item"/>
     </section>
   </div>
 </template>
 
 <script>
+  import MoviePreview from "~/components/Movies/MoviePreview"
 
-  export default {
-    name: 'MoviePreview',
-    props: {
-      id: {
-        type: String,
-        required: true
-      },
-      title: {
-        type: String,
-        required: true
-      },
-      previewText: {
-        type: String,
-        required: true
-      },
-      thumbnail:{
-        type: String,
-        required: true
-      }
-
+  export default{
+    components: {
+      MoviePreview
+    },
+    async asyncData({ params, $axios }) {
+      let { data } = await $axios.get('http://www.omdbapi.com/?apikey=dd5fbf0a&s=Batman}')
+      return {data}
+    },
+    created(){
+      console.log(this.data);
     }
   }
 

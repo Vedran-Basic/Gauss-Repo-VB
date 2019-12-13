@@ -41,7 +41,7 @@ nav a {
   }
 
 .navbar-container {
-  background-image: url('~assets/pictures/HeaderPic.jpg');
+  background-image: url('/HeaderPic.jpg');
   background-position: top;
   background-size: cover;
   height: 100%;

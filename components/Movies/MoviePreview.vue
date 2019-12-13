@@ -1,10 +1,10 @@
 <template>
-  <nuxt-link :to="'/movies/' + id" class="movie-preview">
+  <nuxt-link :to="'/movies/' + movieInstance.imdbID" class="movie-preview">
     <article class="movie-preview">
-      <div class="movie-thumbnail" :style="{backgroundImage: 'url(' + thumbnail + ')' }" ></div>
+      <div class="movie-thumbnail" :style="{backgroundImage: 'url(' + movieInstance.Poster + ')' }" ></div>
       <div class="movie-content">
-        <h1> {{ title }}</h1>
-        <p> {{ previewText }} </p>
+        <h1> {{ movieInstance.Title }}</h1>
+        <p> {{ movieInstance.Year }} </p>
       </div>
     </article>
   </nuxt-link>
@@ -14,27 +14,13 @@
 
   export default {
     name: 'MoviePreview',
-    props: {
-      id: {
-        type: String,
-        required: true
-      },
-      title: {
-        type: String,
-        required: true
-      },
-      previewText: {
-        type: String,
-        required: true
-      },
-      thumbnail: {
-        type: String,
-        required: true
-      }
 
-    }
+    props: {
+      movieInstance : Object
   }
 
+    }
+  
 
 </script>
 
