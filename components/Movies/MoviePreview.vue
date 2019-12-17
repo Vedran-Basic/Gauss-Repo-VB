@@ -26,8 +26,8 @@
 
   .movie-preview {
     border: 1px solid #ccc;
-    box-shadow: 0 2px 2px #ccc;
-    background-color: white;
+    box-shadow: 0 2px 2px rgb(0, 29, 255);
+    background-color: rgb(0, 138, 255);
     width: 90%;
   }
 

@@ -18,7 +18,9 @@ nav {
   padding: 0;
   float: left;
   text-align: center;
-  justify-content: center;}
+  justify-content: center;
+
+}
 
 nav a {
   margin: 20px;
@@ -26,12 +28,11 @@ nav a {
   display: inline-block;
   text-decoration: none;
   text-align: center;
-  justify-content:center;
+  justify-content: center;
   background-color: rgba(0, 148, 255, 0.35);
   font-size: 20px;
   color: white;
   padding: 20px 10px;
-
 }
 
   nav a:hover {

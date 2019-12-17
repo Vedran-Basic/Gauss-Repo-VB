@@ -42,40 +42,4 @@
 
 
 
-
-  .movie-preview {
-    border: 1px solid #ccc;
-    box-shadow: 0 2px 2px #ccc;
-    background-color: white;
-    width: 90%;
-  }
-
-  a {
-    text-decoration: none;
-    color: black;
-  }
-
-  @media (min-width: 850px) {
-    .movie-preview {
-      width: 400px;
-      margin: 10px;
-    }
-  }
-
-  .movie-thumbnail {
-    width: 100%;
-    height: 200px;
-    background-position: center;
-    background-size: cover;
-  }
-
-  .movie-content {
-    padding: 10px;
-    text-align: center;
-  }
-
-  a:hover .movie-content,
-  a:active .movie-content {
-    background-color: #ccc;
-  }
 </style>
