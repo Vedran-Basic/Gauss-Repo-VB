@@ -1,7 +1,7 @@
 <template>
     <div class="search-input">
         <input type="text" v-model="searchText" class="input-style">
-        <button @click="onLoadUser"> Search </button> 
+        <button @click="onLoadUser" class="search-button"> Search </button> 
     </div>
 </template>
 
@@ -22,4 +22,6 @@
 
 <style scoped>
 @import "~/assets/searchbar.css";
+
+
 </style>

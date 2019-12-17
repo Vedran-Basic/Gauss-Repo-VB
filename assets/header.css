@@ -4,9 +4,8 @@ nav {
   overflow: hidden;
   margin: 0 auto;
   text-align: center;
-  height: 200px;
   border: double black;
-  padding: 20px;
+  padding-top: 20px;
 }
 .topnav {
   padding: 0;

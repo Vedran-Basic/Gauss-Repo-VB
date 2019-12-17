@@ -1,6 +1,5 @@
 <template>
   <div class="container">
-    <searchbar searchText="123"/>
     <section class="featured-movies">
       <movie-preview v-for="item in data.Search" :key="item.imdbID"  :movie-instance="item"/>
     </section>
@@ -8,14 +7,12 @@
 </template>
 
 <script>
-  import MoviePreview from "~/components/Movies/MoviePreview"
-  import searchbar from "~/components/searchbar"
+  import MoviePreview from "~/components/Movies/MoviePreview";
 
 
   export default{
     components: {
-      MoviePreview,
-      searchbar
+      MoviePreview
     },
 
     async asyncData({ params, $axios }) {
