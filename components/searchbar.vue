@@ -1,7 +1,7 @@
 <template>
     <div class="search-input">
-        <input type="text" v-model="searchText" class="input-style">
-        <button @click="onLoadUser" class="search-button"> Search </button> 
+        <input type="text" v-model="searchContent" class="input-style">
+        <button @click="onClickSearch" class="search-button"> Search </button> 
     </div>
 </template>
 
@@ -9,11 +9,11 @@
 <script>
   export default {
     props:{
-      searchText: ''
+      searchContent: ''
     },
     methods: {
-      onLoadUser() {
-  
+      onClickSearch() {
+        
       }
     }
   }

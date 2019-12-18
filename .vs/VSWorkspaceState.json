@@ -1,13 +1,12 @@
 {
   "ExpandedNodes": [
     "",
-    "\\assets",
-    "\\assets\\pictures",
     "\\components",
+    "\\components\\Movies",
     "\\pages",
     "\\pages\\movies",
     "\\pages\\movies\\_id"
   ],
-  "SelectedNode": "\\pages\\index.vue",
+  "SelectedNode": "\\components\\searchbar.vue",
   "PreviewInSolutionExplorer": false
 }

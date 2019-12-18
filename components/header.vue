@@ -7,10 +7,10 @@
           <div class="navbar-item"> <a href="/movies"> Movies </a> </div>
           <div class="navbar-item"> <a href="/about"> About </a></div>
         </div>
-        <searchbar searchText="" />
       </nav>
-
+      <searchbar searchText="" :search-content="searchContent" />
     </div>
+
 
   </header>
 </template>
@@ -26,6 +26,10 @@
   export default {
     components: {
       searchbar
+    },
+    props: {
+      searchContent: String,
+      required: false
     }
   }
 </script>

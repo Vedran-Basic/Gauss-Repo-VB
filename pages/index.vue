@@ -1,49 +1,57 @@
 <template>
   <div class="container">
     <div>
-      <div class="HomePageLinks">
+      <div class="register-links">
         <a href="/users"
            class="button--green">
           Users page
         </a>
+        <nuxt-link to="/users" class="button--green">Users - Single Page Application</nuxt-link>
       </div>
-      <nuxt-link to="/users">Users - Single Page App</nuxt-link>
 
-      <p>
-        {{ data.Search[0].Title }}
-      </p>
 
+      <!--<p> {{ data.Search[0].Title }} </p>-->
+      <section class="featured-movies">
+        <movie-preview v-for="item in data.Search" :key="item.imdbID" :movie-instance="item" />
+      </section>
 
     </div>
   </div>
 </template>
 
 <script>
+  import MoviePreview from "~/components/Movies/MoviePreview";
   export default {
-    async asyncData({ params, $axios }) {
-      const { data } = await $axios.get('http://www.omdbapi.com/?apikey=dd5fbf0a&s=Batman}')
-  
-      
-      return {data}
+    components: {
+      MoviePreview
     },
-    created(){
+   
+    async asyncData({ params, $axios }) {
+      let { data } = await $axios.get('http://www.omdbapi.com/?apikey=dd5fbf0a&s=Batman}')
+      return { data }
+        },
+    created() {
 
     }
   }
 </script>
 
 <style>
-  .container {
-    margin: 0 auto;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+  .register-links {
+    display:flex;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    text-align:center;
+    
   }
 
-  .HomePageLinks {
-    padding-top: 15px;
-    padding-bottom: 15px
+
+  .featured-movies {
+    display: flex;
+    padding: 20px;
+    box-sizing: border-box;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
   }
 </style>
