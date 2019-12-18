@@ -29,10 +29,7 @@
     async asyncData({ params, $axios }) {
       let { data } = await $axios.get('http://www.omdbapi.com/?apikey=dd5fbf0a&s=Batman}')
       return { data }
-        },
-    created() {
-
-    }
+        }
   }
 </script>
 

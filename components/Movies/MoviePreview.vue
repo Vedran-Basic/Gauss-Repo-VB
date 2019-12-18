@@ -3,8 +3,8 @@
     <article class="movie-preview">
       <div class="movie-thumbnail" :style="{backgroundImage: 'url(' + movieInstance.Poster + ')' }" ></div>
       <div class="movie-content">
-        <h1> {{ movieInstance.Title }}</h1>
-        <p> {{ movieInstance.Year }} </p>
+        <h1> {{ movieInstance.Title }}  {{ movieInstance.Year }} </h1>
+        <p>  </p>
       </div>
     </article>
   </nuxt-link>
