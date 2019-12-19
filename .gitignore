@@ -88,3 +88,6 @@ sw.*
 
 # Vim swap files
 *.swp
+
+#Ovo je moj fajl u kojem vjezbam js stvari
+jsbinPractice.txt
