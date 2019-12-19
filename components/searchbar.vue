@@ -2,7 +2,7 @@
   <div class="search-input">
     <input type="text" v-model="searchQuery" class="input-style">
     
-    <nuxt-link to="/movies/" >  <button @click="" class="search-button"> Search </button> </nuxt-link>
+    <button  class="search-button"> Search </button>
   </div>
 </template>
 
@@ -15,10 +15,6 @@
       }
     },
 
-    async asyncData({ params, $axios }) {
-      let { data } = await $axios.get('http://www.omdbapi.com/?apikey=dd5fbf0a&s=Batman')
-      return { data }
-    }
   }
 </script>
 
