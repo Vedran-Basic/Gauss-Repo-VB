@@ -17,7 +17,7 @@
       return { data }
     },
     created() {
-      console.log(this.data)
+      console.log()
     }
   }
 </script>
@@ -31,6 +31,7 @@
         let { data } = await $axios.get(url)
         return { data }
       },-->
+
        <!--async asyncData({ params, $axios }) {
       let { data } = await $axios.get('http://www.omdbapi.com/?apikey=dd5fbf0a&s=batman')
       return { data }
