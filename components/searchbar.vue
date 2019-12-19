@@ -1,8 +1,9 @@
 <template>
-    <div class="search-input">
-        <input type="text" v-model="searchQuery" class="input-style">
-        <button @click="onClickSearch" class="search-button"> Search </button> 
-    </div>
+  <div class="search-input">
+    <input type="text" v-model="searchQuery" class="input-style">
+    
+    <nuxt-link to="/movies/" >  <button @click="" class="search-button"> Search </button> </nuxt-link>
+  </div>
 </template>
 
 
@@ -13,20 +14,12 @@
         searchQuery: ''
       }
     },
-    methods: {
-      onClickSearch(){
-        console.log(this.searchQuery)
-      }
-    },
+
+    async asyncData({ params, $axios }) {
+      let { data } = await $axios.get('http://www.omdbapi.com/?apikey=dd5fbf0a&s=Batman')
+      return { data }
+    }
   }
-    // onClickSearch:{
-    //   async asyncData({ params, $axios }) {
-    //     let { data } = await $axios.get('http://www.omdbapi.com/?apikey=dd5fbf0a&s=' + 'Batman' + '}')
-    //     return { data }
-    // }
-
-    // }
-
 </script>
 
 

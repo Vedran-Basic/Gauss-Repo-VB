@@ -5,8 +5,10 @@
     "\\components\\Movies",
     "\\pages",
     "\\pages\\movies",
-    "\\pages\\movies\\_id"
+    "\\pages\\movies\\_id",
+    "\\pages\\users",
+    "\\pages\\users\\_id"
   ],
-  "SelectedNode": "\\components\\searchbar.vue",
+  "SelectedNode": "\\pages\\users\\_id\\index.vue",
   "PreviewInSolutionExplorer": false
 }

@@ -10,7 +10,7 @@
       </div>
 
 
-      <!--<p> {{ data.Search[0].Title }} </p>-->
+      <p>  </p>
       <section class="featured-movies">
         <movie-preview v-for="item in data.Search" :key="item.imdbID" :movie-instance="item" />
       </section>
@@ -27,9 +27,9 @@
     },
    
     async asyncData({ params, $axios }) {
-      let { data } = await $axios.get('http://www.omdbapi.com/?apikey=dd5fbf0a&s=Batman}')
+      let { data } = await $axios.get('http://www.omdbapi.com/?apikey=dd5fbf0a&s=Batman')
       return { data }
-        }
+    }
   }
 </script>
 
