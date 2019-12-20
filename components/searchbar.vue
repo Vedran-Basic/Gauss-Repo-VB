@@ -2,7 +2,7 @@
   <div class="search-input">
     <input type="text" v-model="searchQuery" class="input-style">
     
-    <button  class="search-button"> Search </button>
+    <button  class="search-button" @click="onSearch"> Search </button>
   </div>
 </template>
 
@@ -14,7 +14,11 @@
         searchQuery: ''
       }
     },
-
+    methods:{
+      onSearch(){
+        this.$router.push('/' + this.searchQuery)
+      }
+    }
   }
 </script>
 

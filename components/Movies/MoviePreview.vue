@@ -1,6 +1,7 @@
 <template>
   <nuxt-link :to="'/movies/' + movieInstance.imdbID" class="movie-preview">
     <article class="movie-preview">
+      <img :src="movieInstance.Poster" @error=""/>
       <div class="movie-thumbnail" :style="{backgroundImage: 'url(' + movieInstance.Poster + ')' }" ></div>
       <div class="movie-content">
         <h1> {{ movieInstance.Title }}  {{ movieInstance.Year }} </h1>
