@@ -27,7 +27,7 @@
     },
     methods: {
       logConsole() {
-        console.log(data)
+        console.log(this)
       }
     },
     components: {
