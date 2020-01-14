@@ -1,27 +1,38 @@
 <template>
   <div>
     <div id="LoadUserButton">
-      Enter a username:
-      <input type="text" v-model="userID">
-      <button @click="onLoadUser"> Load User</button>
+      Enter a text:
+      <input type="text" v-model="inputText">
+      <button @click="logConsole"> Console Log</button>
       <nuxt-child />
+<br>
+        <pagination />
+
     </div>
   </div>
 </template>
 
 
 <script>
+  import pagination from '~/components/pagination'
   export default {
     data() {
       return {
-        userID: ''
+        inputText: ''
       }
+    },
+    async asyncData({$axios}){
+      let response = await $axios.get(`http://www.omdbapi.com/?apikey=dd5fbf0a&s=batman&page=1&type=movie`)
+      return response.data
     },
     methods: {
-      onLoadUser() {
-        this.$router.push('/users/' + this.userID)
+      logConsole() {
+        console.log(data)
       }
     },
+    components: {
+      pagination
+    }
   }
 
 

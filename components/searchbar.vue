@@ -11,12 +11,12 @@
   export default {
     data() {
       return {
-        searchQuery: ''
+        searchQuery: '',
       }
     },
     methods:{
       onSearch(){
-        this.$router.push('/' + this.searchQuery)
+        this.$router.push({path:'/search', query:{results: this.searchQuery}} )
       }
     }
   }
