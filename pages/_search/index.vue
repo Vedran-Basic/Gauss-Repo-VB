@@ -1,9 +1,13 @@
 <template>
   <div class="container">
+    <div v-if="this.data.Response !== 'False' ">
       <section class="searched-movies">
         <movie-preview v-for="item in data.Search" :key="item.imdbID" :movie-instance="item" />
       </section>
-      <pagination/>
+      <pagination :total="data.totalResults"/>
+    </div>
+      <span class="movie-not-found" v-if="this.data.Response==='False'">{{ this.data.Error }} </span>
+      <button @click="consoleLog"> console.Log </button>
   </div>
 </template>
 
@@ -14,10 +18,14 @@
     components: {
       MoviePreview, pagination
     },
-
     watchQuery(newQuery, oldQuery){
       if(oldQuery!=newQuery)
         return newQuery;
+    },
+    methods:{
+      consoleLog(){
+        console.log(this)
+      }
     },
    
     async asyncData({ route, $axios }) {
@@ -36,19 +44,26 @@
 </script>
 
 <style scoped>
+/*
 .searched-movies{
     align-items: center;
     justify-content: center;
     overflow:visible;
 }
-
+*/
 .pagination{
     display:inline-block;
     align-items: center;
     justify-content: center;
     overflow:visible;
 }
+.movie-not-found{
+  display: block;
+  text-align: center;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 50px;
+  color: white;
 
 
-
+}
 </style>
