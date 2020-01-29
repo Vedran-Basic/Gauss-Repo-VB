@@ -21,12 +21,9 @@
   import {mapMutations} from 'vuex'
   import {mapState} from 'vuex'
   export default {
-    async asyncData({ params, $axios }) {
-        let res = await $axios.get(`http://www.omdbapi.com/?apikey=dd5fbf0a&i=`)
-        this.$store.dispatch('favMovies/addToFavorites', params.id)
-
-        }
-    },
+    async asyncData({ context }) {
+        $store.dispatch('favMovies/fetchSingleMovie', params.id)
+        },
     computed:{
       ...mapState('favMovies',{
         movieState: 'currentMovie'

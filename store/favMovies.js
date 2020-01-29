@@ -21,5 +21,9 @@ export const actions = {
     },
     addToFavorites({commit}, data){
         commit('addToFavs', data)
+    },
+    fetchSingleMovie(){
+
     }
+    
 }
