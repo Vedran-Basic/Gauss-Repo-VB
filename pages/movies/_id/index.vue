@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    
+    <!--
     <section class="movie">
       <div class="card">
         <div class="left">
@@ -13,7 +13,7 @@
           <button @click="addToFavs()" class="my-button"> Add to favorites </button>
         </div>
       </div>
-    </section>
+    </section>-->
   </div>
 </template>
 
@@ -21,9 +21,9 @@
   import {mapMutations} from 'vuex'
   import {mapState} from 'vuex'
   export default {
-    async asyncData({ context }) {
-        $store.dispatch('favMovies/fetchSingleMovie', params.id)
-        },
+    async asyncData({store, params}) {
+      
+},
     computed:{
       ...mapState('favMovies',{
         movieState: 'currentMovie'
