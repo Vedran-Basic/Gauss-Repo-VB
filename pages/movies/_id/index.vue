@@ -3,7 +3,6 @@
     
     <section class="movie">
       <div class="card">
-        <!--<div class="left" :style="{backgroundImage: `url(${movie.Poster})` }" > </div>-->
         <div class="left">
           <img class="image" :src="movie.Poster" >
         </div>
@@ -23,25 +22,12 @@
   import {mapState} from 'vuex'
   export default {
     async asyncData({ params, $axios }) {
-      let response = await $axios.get(`http://www.omdbapi.com/?apikey=dd5fbf0a&i=${params.id}`)
-      return {
-        movie: response.data        
+        let res = await $axios.get(`http://www.omdbapi.com/?apikey=dd5fbf0a&i=`)
+        this.$store.dispatch('favMovies/addToFavorites', params.id)
+
         }
     },
-    data(){
-      return{
-
-      }
-    },
     computed:{
-
-      /*currentMovie(){
-        return this.$store.state.favMovies.currentMovie
-      }*/
-
-      /*...mapState('favMovies',[
-        'currentMovie'
-      ])*/
       ...mapState('favMovies',{
         movieState: 'currentMovie'
       }
