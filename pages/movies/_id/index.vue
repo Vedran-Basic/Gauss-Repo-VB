@@ -34,17 +34,23 @@
       }
     },
     computed:{
+
       /*currentMovie(){
         return this.$store.state.favMovies.currentMovie
       }*/
-      ...mapState('favMovies',[
+
+      /*...mapState('favMovies',[
         'currentMovie'
-      ])
+      ])*/
+      ...mapState('favMovies',{
+        movieState: 'currentMovie'
+      }
+      )
     },
     methods: {
       addToFavs(){
-        console.log(this)
-        this.$store.dispatch('favMovies/addToFavorites', this.currentMovie)
+        console.log(this.movieState)
+        this.$store.dispatch('favMovies/addToFavorites', this.movieState)
       }
   },
   mounted(){

@@ -1,5 +1,5 @@
 <template>
-  <div @click="tempStoreMovie(movieInstance)">
+  <div @click="storeMovie(movieInstance)">
     <nuxt-link :to="'/movies/' + movieInstance.imdbID">
         <div class="card">
           <div class="upper">
@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import { mapMutations } from 'vuex'
+import { mapActions } from 'vuex'
 
   export default {
     name: 'MoviePreview',
@@ -27,16 +27,11 @@ import { mapMutations } from 'vuex'
       movieInstance : Object
   },
       methods:{
-          tempStoreMovie(movieInstance){
-            
-          }
-      /*  ...mapMutations([
-          'tempStoreMovie',
-          'removeCurrentMovie',
-          'addToFavs'])*/
+      ...mapActions('favMovies',[
+          'storeMovie'
+          ])
         
       }
-        
         
     
 }
