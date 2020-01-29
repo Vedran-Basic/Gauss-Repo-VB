@@ -7,7 +7,6 @@
       <pagination :total="data.totalResults"/>
     </div>
       <span class="movie-not-found" v-if="this.data.Response==='False'">{{ this.data.Error }} </span>
-      <button @click="consoleLog"> console.Log </button>
   </div>
 </template>
 
@@ -22,11 +21,6 @@
       if(oldQuery!=newQuery)
         return newQuery;
     },
-    methods:{
-      consoleLog(){
-        console.log(this)
-      }
-    },
    
     async asyncData({ route, $axios }) {
       if(route.query.pageNumber===undefined){
@@ -39,6 +33,7 @@
         return { data }
         }
       }
+      
   }
 
 </script>
@@ -63,7 +58,14 @@
   font-family: "Times New Roman", Times, serif;
   font-size: 50px;
   color: white;
-
-
 }
+
+  .searched-movies {
+    display: flex;
+    padding: 20px;
+    box-sizing: border-box;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+  }
 </style>

@@ -1,21 +1,17 @@
 <template>
   <div class="container">
-    <div>
+
       <div class="register-links">
         <a href="/users"
-           class="button--green">
+           class="my-button">
           Users page
         </a>
-        <nuxt-link to="/users" class="button--green">Users - Single Page Application</nuxt-link>
+        <nuxt-link to="/users" class="my-button">Users - Single Page Application</nuxt-link>
       </div>
 
-
-      <p>  </p>
       <section class="featured-movies">
         <movie-preview v-for="item in data.Search" :key="item.imdbID" :movie-instance="item" />
       </section>
-
-    </div>
   </div>
 </template>
 
@@ -25,7 +21,9 @@
     components: {
       MoviePreview
     },
-   
+
+
+
     async asyncData({ params, $axios }) {
       let { data } = await $axios.get('http://www.omdbapi.com/?apikey=dd5fbf0a&s=Batman')
       return { data }
