@@ -11,7 +11,7 @@
           <h1> {{movie.Title}} </h1>
           <hr>
           <p class="about"> {{movie.Plot}}</p>
-          <button @click="addToFavs(movie)" class="my-button"> Add to favorites </button>
+          <button @click="addToFavs()" class="my-button"> Add to favorites </button>
         </div>
       </div>
     </section>
@@ -20,6 +20,7 @@
 
 <script>
   import {mapMutations} from 'vuex'
+  import {mapState} from 'vuex'
   export default {
     async asyncData({ params, $axios }) {
       let response = await $axios.get(`http://www.omdbapi.com/?apikey=dd5fbf0a&i=${params.id}`)
@@ -32,17 +33,23 @@
 
       }
     },
+    computed:{
+      /*currentMovie(){
+        return this.$store.state.favMovies.currentMovie
+      }*/
+      ...mapState('favMovies',[
+        'currentMovie'
+      ])
+    },
     methods: {
-      ...mapMutations([
-      'addToFavs'
-    ])
+      addToFavs(){
+        console.log(this)
+        this.$store.dispatch('favMovies/addToFavorites', this.currentMovie)
+      }
   },
   mounted(){
-    this.$store.dispatch('favMovies/handle', this.movie)
+    this.$store.dispatch('favMovies/storeMovie', this.movie)
   }
-    // created() {
-    //   console.log(this)
-    //   }
   }
 </script>
 

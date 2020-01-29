@@ -5,19 +5,21 @@ export  const state = () =>({
 
 export const mutations = {
     tempStoreMovie(state, data){
-        this.state.currentMovie=data
+        state.currentMovie=data
     },
     removeCurrentMovie(){
-        this.state.currentMovie={}
+        state.currentMovie={}
     },
     addToFavs(state, payload){
-        this.state.favMoviesList.push(payload)
-        console.log(this.favMoviesList)
+        state.favMoviesList.push(payload)
     }
 }
 
 export const actions = {
-    handle({commit}, data){
+    storeMovie({commit}, data){
         commit('tempStoreMovie', data)
+    },
+    addToFavorites({commit}, data){
+        commit('addToFavs', data)
     }
 }
