@@ -1,35 +1,34 @@
 <template>
     <div class="pagination">
         <ul class="top-pages">
-            <li>
-                <nuxt-link v-if="$route.query.pageNumber !== undefined" :to="{path:'/search', query: { results:this.$route.query.results, pageNumber: undefined} }"> 1 </nuxt-link>
-                <span v-else> 1 </span>
-            </li>
-            <li>
-              <nuxt-link v-if="$route.query.pageNumber === undefined" :to="{ path: '/search', query: { results:this.$route.query.results, pageNumber:2 } }"> 2 <!--{{ num }}-->  </nuxt-link>
-            </li>
-            <li>
-              <nuxt-link v-if="$route.query.pageNumber > 2" :to="{ path: '/search', query: { results:this.$route.query.results, pageNumber:this.$route.query.pageNumber-1 } }"> {{ this.$route.query.pageNumber - 1}} <!--{{ num }}-->  </nuxt-link>
-            </li>
-            <li>
-              <span v-if="$route.query.pageNumber !== lastPage && $route.query.pageNumber >1"> {{this.$route.query.pageNumber}}  </span>
-            </li>
 
+          <nuxt-link v-if="$route.query.pageNumber !== undefined" :to="{path:'/search', query: { results:this.$route.query.results, pageNumber: undefined} }"> 
+            <li>1</li>
+          </nuxt-link>
+          <li v-else class="current-page"> 1 </li> 
 
-            <li>
-              <nuxt-link v-if="$route.query.pageNumber > 1 && $route.query.pageNumber < lastPage-1" :to="{ path: '/search', query: { results:this.$route.query.results, pageNumber:this.$route.query.pageNumber+1 } }"> {{ this.$route.query.pageNumber + 1}} <!--{{ num }}-->  </nuxt-link>
-            </li>
-            
-            
-            <li>
-              <nuxt-link v-if="$route.query.pageNumber === undefined || $route.query.pageNumber !== lastPage" :to="{ path: '/search', query: { results:this.$route.query.results, pageNumber: lastPage } }">  {{ lastPage }}  </nuxt-link>
-              <span v-else> {{ lastPage }} </span>
-            </li>
+          <nuxt-link  v-if="$route.query.pageNumber === undefined" :to="{ path: '/search', query: { results:this.$route.query.results, pageNumber:2 } }">
+            <li> 2 </li>
+          </nuxt-link>
 
-            
-            <li> <button  class="search-button" @click="onSearch"> searchov Console.log </button> </li>
+          <nuxt-link v-if="$route.query.pageNumber > 2" :to="{path: '/search', query: { results:this.$route.query.results, pageNumber:this.$route.query.pageNumber-1 }}"> 
+              <li>{{ this.$route.query.pageNumber - 1}}   </li>
+          </nuxt-link>
+
+          <li class="current-page" v-if="$route.query.pageNumber !== lastPage && $route.query.pageNumber >1">{{this.$route.query.pageNumber}}</li>
+
+          <nuxt-link v-if="$route.query.pageNumber > 1 && $route.query.pageNumber < lastPage-1" :to="{ path: '/search', query: { results:this.$route.query.results, pageNumber:this.$route.query.pageNumber+1 } }"> 
+            <li> {{ this.$route.query.pageNumber + 1}} </li>
+          </nuxt-link>
+
+          <nuxt-link v-if="$route.query.pageNumber === undefined || $route.query.pageNumber !== lastPage" :to="{ path: '/search', query: { results:this.$route.query.results, pageNumber: lastPage } }"> 
+            <li>  {{ lastPage }} </li>
+          </nuxt-link>
+          <li v-else class="current-page"> {{ lastPage }} </li>
+          
         </ul>
-    </div>  
+       
+    </div>
 </template>
 
 <script>
@@ -49,9 +48,7 @@
   }
 </script>
 <style scoped>
-.pagination{
-float:right;
-}
+
 .top-pages{
   display:inline;
   list-style:none;
@@ -60,4 +57,32 @@ float:right;
 .search-button{
   display: inline;
 }
+
+
+.pagination {
+  display: inline-block;
+}
+
+.pagination li{
+  color: black;
+  float: left;
+  padding: 20px 16px;
+  text-decoration: none;
+  margin:3px;
+  font-size: 50px;
+  background-color:;
+}
+
+  li:hover ,
+  li:active{
+    background-color: grey;
+    cursor:pointer;
+  }
+
+  li{
+      background-color:slategrey;
+  }
+  .current-page{
+    background-color: rgb(66,66,66);
+  }
 </style>

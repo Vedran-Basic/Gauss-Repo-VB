@@ -1,14 +1,5 @@
 <template>
   <div class="container">
-
-      <div class="register-links">
-        <a href="/users"
-           class="my-button">
-          Users page
-        </a>
-        <nuxt-link to="/users" class="my-button">Users - Single Page Application</nuxt-link>
-      </div>
-
       <section class="featured-movies">
         <movie-preview v-for="item in data.Search" :key="item.imdbID" :movie-instance="item" />
       </section>

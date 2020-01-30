@@ -4,7 +4,6 @@ nav {
   overflow: hidden;
   margin: 0 auto;
   text-align: center;
-  border: double black;
   padding-top: 20px;
 }
 .topnav {
@@ -19,7 +18,6 @@ nav {
   float: left;
   text-align: center;
   justify-content: center;
-
 }
 
 nav a {

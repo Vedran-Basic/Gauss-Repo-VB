@@ -14,7 +14,8 @@
     },
    
     async asyncData({ params, $axios }) {
-      let { data }= await $axios.get('http://www.omdbapi.com/?apikey=dd5fbf0a&s=Batman')
+      let thisYear= new Date
+      let { data }= await $axios.get(`http://www.omdbapi.com/?apikey=dd5fbf0a&type=movie&y=${thisYear.getFullYear()}`)
       return { data }
     },
   

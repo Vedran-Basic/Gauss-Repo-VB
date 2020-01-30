@@ -1,6 +1,5 @@
 <template>
   <div class="container">
-    <!--
     <section class="movie">
       <div class="card">
         <div class="left">
@@ -10,35 +9,56 @@
           <h1> {{movie.Title}} </h1>
           <hr>
           <p class="about"> {{movie.Plot}}</p>
-          <button @click="addToFavs()" class="my-button"> Add to favorites </button>
+          <button v-if="isInFavorites" @click="addToFavs()" class="my-button"> Add to favorites </button>
+          <button v-if="!isInFavorites" @click="removeFromFavs()" class="my-button"> Remove from favorites </button>
+
         </div>
       </div>
-    </section>-->
+    </section>
   </div>
 </template>
 
 <script>
-  import {mapMutations} from 'vuex'
   import {mapState} from 'vuex'
   export default {
-    async asyncData({store, params}) {
-      
+    async asyncData({store, params, $axios}) {
+      console.log("bla", params.id, $axios)
+      const movie = await store.dispatch('favMovies/fetchSingleMovie', {omdbID: params.id, $axios})
+      return movie
+},
+async mounted(){
+
+  //await this.$store.dispatch('favMovies/fetchSingleMovie', this.$route.params.id)
 },
     computed:{
       ...mapState('favMovies',{
         movieState: 'currentMovie'
       }
-      )
+      ),
+      movie(){
+        return this.$store.state.favMovies.currentMovie
+      },
+      isInFavorites(){
+        let isIt= false
+        this.$store.state.favMovies.favMoviesList.forEach((item)=>{
+          if(item===this.movie.imdbID){
+            isIt=true
+          }
+          })
+          return !isIt
+      }
+
     },
     methods: {
       addToFavs(){
-        console.log(this.movieState)
-        this.$store.dispatch('favMovies/addToFavorites', this.movieState)
+        this.$store.dispatch('favMovies/addToFavorites', this.movie.imdbID)
+      },
+      removeFromFavs(){
+        this.$store.dispatch('favMovies/removeFromFavorites', this.movie.imdbID)
+
       }
+
   },
-  mounted(){
-    this.$store.dispatch('favMovies/storeMovie', this.movie)
-  }
   }
 </script>
 

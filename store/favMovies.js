@@ -7,8 +7,8 @@ export const mutations = {
     tempStoreMovie(state, data){
         state.currentMovie=data
     },
-    removeCurrentMovie(){
-        state.currentMovie={}
+    removeFromFavs(state, payload){
+        state.favMoviesList = state.favMoviesList.filter(item => payload!==item)
     },
     addToFavs(state, payload){
         state.favMoviesList.push(payload)
@@ -22,8 +22,16 @@ export const actions = {
     addToFavorites({commit}, data){
         commit('addToFavs', data)
     },
-    fetchSingleMovie(){
-
+    removeFromFavorites({commit}, data){
+        commit('removeFromFavs', data)
+    },
+    fetchSingleMovie({commit}, payload){
+        console.log(" bla2")
+        payload.$axios.get(`http://www.omdbapi.com/?apikey=dd5fbf0a&i=${payload.omdbID}`).then(({data})=>{
+        commit('tempStoreMovie', data)
+    })
     }
+
+
     
 }

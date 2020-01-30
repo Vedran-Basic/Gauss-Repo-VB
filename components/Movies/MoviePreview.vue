@@ -3,13 +3,14 @@
     <nuxt-link :to="'/movies/' + movieInstance.imdbID">
         <div class="card">
           <div class="upper">
-            <img :src="movieInstance.Poster" >
+            <img v-if="movieInstance.Poster" :src="movieInstance.Poster" >
+            <img v-else src="https://www.tate.org.uk/art/images/work/L/L01/L01682_10.jpg">
           </div>
           <div class="lower">
             <div class="movie-content">
             
-              <h1> {{ movieInstance.Title }}  {{ movieInstance.Year }} </h1>
-              <p> {{  }} </p>
+              <h1> {{ movieInstance.Title }}  ({{ movieInstance.Year }}) </h1>
+              <p>  </p>
             
             </div>
           </div>
@@ -23,6 +24,11 @@ import { mapActions } from 'vuex'
 
   export default {
     name: 'MoviePreview',
+    data(){
+      return{
+        undefinedPoster: String
+      }
+    },
     props: {
       movieInstance : Object
   },
@@ -31,6 +37,13 @@ import { mapActions } from 'vuex'
           'storeMovie'
           ])
         
+      },
+      async asyncData({$axios}){
+        let res = $axios.get('https://www.tate.org.uk/art/images/work/L/L01/L01682_10.jpg')
+        return res.data
+      },
+      mounted(){
+        console.log(this.data)
       }
         
     
@@ -45,6 +58,7 @@ import { mapActions } from 'vuex'
     border: 1px solid #ccc;
     background-color: rgb(0, 138, 255);
     width: 90%;
+    
   }
 
   a {
@@ -57,11 +71,6 @@ import { mapActions } from 'vuex'
       width: 400px;
       margin: 10px;
     }
-  }
-
-  .movie-thumbnail {
-    background-position: center;
-    background-size: cover;
   }
   
   .movie-content {
@@ -83,4 +92,15 @@ import { mapActions } from 'vuex'
     justify-content: center;
   }
 
+.upper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden
+}
+.fill img {
+    flex-shrink: 0;
+    min-width: 100%;
+    min-height: 100%
+}
 </style>
