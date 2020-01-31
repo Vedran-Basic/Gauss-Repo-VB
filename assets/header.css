@@ -10,38 +10,38 @@ nav {
   padding: 0;
   margin: 0;
   display: inline-block;
-  justify-content: center;
+
 }
 
 .navbar-item {
   padding: 0;
   float: left;
-  text-align: center;
+
   justify-content: center;
 }
 
 nav a {
   margin: 20px;
-  width: 350px;
+  width: 400px;
+
   display: inline-block;
   text-decoration: none;
-  text-align: center;
-  justify-content: center;
-  background-color: rgba(0, 148, 255, 0.45);
-  font-size: 90px;
+
+  background-color: rgba(255, 0, 149, 0.50);
+  font-size: 60px;
   color: white;
   padding: 20px 10px;
 }
 
   nav a:hover {
-    background-color: rgba(0, 148, 255,0.75);
+    background-color: rgba(132, 0, 255, 0.5);
     color: lightgoldenrodyellow;
   }
 
 .navbar-container {
+
   background-image: url('/HeaderPic.jpg');
   background-position: top;
   background-size: cover;
-  height: 100%;
   overflow: auto;
 }

@@ -1,6 +1,8 @@
 <template>
   <div class="container">
-    <section class="movie">
+    <div class="search-bar">
+      <searchbar searchText="" :search-content="searchContent" />
+    </div>
       <div class="card">
         <div class="left">
           <img class="image" :src="movie.Poster" >
@@ -14,17 +16,26 @@
 
         </div>
       </div>
-    </section>
+
+
   </div>
 </template>
 
 <script>
   import {mapState} from 'vuex'
+  import searchbar from '~/components/searchbar'
+
   export default {
+    data(){
+      return{
+        searchContent: ''
+      }
+    },
+    components:{
+      searchbar
+    },
     async asyncData({store, params, $axios}) {
-      console.log("bla", params.id, $axios)
-      const movie = await store.dispatch('favMovies/fetchSingleMovie', {omdbID: params.id, $axios})
-      return movie
+      const movieSingle = await store.dispatch('favMovies/fetchSingleMovie', {omdbID: params.id, $axios})
 },
 async mounted(){
 
@@ -63,18 +74,16 @@ async mounted(){
 </script>
 
 <style scoped>
+.searchbar{
+  display: inline-block;
+}
 .card {
-  display:block;
-  width:2000px;
-  height:fit-content;
-  position:absolute;
-  left:0;
-  right:0;
+  display:flex;
+  width:1000px;
   margin:50px auto;
-  top:13vh;
-  bottom:0;
   border:10px solid black;
   background-color:black;
+  height:500px;
 
   }
   .left {
@@ -86,17 +95,18 @@ async mounted(){
     position:relative;
     color:white;
     width:60%;
-    height: auto;
+    height: inherit;
     float:left;
-    height:400px;
+    height:1000px;
+
     border-radius:0 10px 10px 0;
   }
 
   .image {
       width:100%;
-      height:auto;
+      height:100%;
       border-radius:10px 0 0 10px;
-      object-fit: cover;
+      object-fit:contain;
 
     }
 
@@ -143,8 +153,9 @@ async mounted(){
   }
 
   .right button{
+    
     position:absolute;
-    bottom:20px;
+    bottom:0px;
     right:20px;
 
   }

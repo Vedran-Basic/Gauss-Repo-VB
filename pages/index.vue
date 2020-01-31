@@ -1,18 +1,27 @@
 <template>
   <div class="container">
+      <searchbar searchText="" :search-content="searchContent" />
+
       <section class="featured-movies">
         <movie-preview v-for="item in data.Search" :key="item.imdbID" :movie-instance="item" />
       </section>
+      
   </div>
 </template>
 
 <script>
   import MoviePreview from "~/components/Movies/MoviePreview";
-  export default {
-    components: {
-      MoviePreview
-    },
+  import searchbar from '~/components/searchbar'
 
+  export default {
+    data(){
+      return{
+        searchContent:this.$route.query.results
+        }
+    },
+    components: {
+      MoviePreview,searchbar
+    },
 
 
     async asyncData({ params, $axios }) {

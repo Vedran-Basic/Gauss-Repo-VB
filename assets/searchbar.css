@@ -1,7 +1,8 @@
-.search-input {
+.search-container {
   display: block;
   overflow: hidden;
   margin-top:20px;
+  margin-bottom:20px;
   padding: 0;
   float: left;
   width: 100%;
@@ -9,28 +10,29 @@
 
 .input-style {
   display: inline-block;
-  color: white;
-  width: 1200px;
-  height: 100px;
-  background-color: rgba(0, 38, 255, 0.5);
+  color: black;
+  width: 500px;
+  height: 50px;
+  background-color:white;
   margin-left: 5%;
   margin-right: 20px;
   border: 2px solid rgba(128, 128, 128, 0.7);
   float: left;
-  font-size: 75px;
+  font-size: 45px;
 }
 
 .search-button {
   margin: 0;
   padding: 10px;
   width: 400px;
-  overflow: auto;
+  height:55px;
+  overflow: hidden;
   color: white;
   background-color: rgba(0, 38, 255, 0.35);
   border-radius: 10px;
   border: none;
   float: left;
-  font-size: 75px;
+  font-size: 30px;
 }
 
 .search-button:hover{

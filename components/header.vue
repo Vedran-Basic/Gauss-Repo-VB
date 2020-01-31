@@ -4,20 +4,19 @@
       <nav>
         <div class="topnav">
           <div class="navbar-item"> <nuxt-link :to="'/'"> Home </nuxt-link> </div>
-          <div class="navbar-item"> <nuxt-link :to="'/users'"> Profile </nuxt-link> </div>
+          <div class="navbar-item"> <nuxt-link :to="'/favorites'"> Favorites </nuxt-link> </div>
           <div class="navbar-item"> <nuxt-link :to="'about'"> About </nuxt-link> </div>
         </div>
       </nav>
-      <searchbar searchText="" :search-content="searchContent" />
     </div>
-
-
   </header>
 </template>
 
 <style scoped>
 @import "~/assets/header.css";
 @import "~/assets/searchbar.css";
+
+
 </style>
 
 <script>

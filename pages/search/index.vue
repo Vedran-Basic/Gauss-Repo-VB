@@ -1,10 +1,19 @@
 <template>
   <div class="container">
+    <searchbar searchText="" :search-content="searchContent" />
+
     <div v-if="this.data.Response !== 'False' ">
+            <h1> Search results:</h1>
+
+      <div class="page-div">
+        <pagination :total="data.totalResults"/>
+      </div>
       <section class="searched-movies">
         <movie-preview v-for="item in data.Search" :key="item.imdbID" :movie-instance="item" />
       </section>
-      <pagination :total="data.totalResults"/>
+      <div class="page-div">
+        <pagination :total="data.totalResults"/>
+      </div>
     </div>
       <span class="movie-not-found" v-if="this.data.Response==='False'">{{ this.data.Error }} </span>
   </div>
@@ -13,9 +22,16 @@
 <script>
   import MoviePreview from '~/components/Movies/MoviePreview'
   import pagination from '~/components/pagination'
+  import searchbar from '~/components/searchbar'
   export default {
+    data(){
+      return{
+        searchContent:this.$route.query.results
+        }
+    },
+    
     components: {
-      MoviePreview, pagination
+      MoviePreview, pagination, searchbar
     },
     watchQuery(newQuery, oldQuery){
       if(oldQuery!=newQuery)
@@ -62,10 +78,21 @@
 
   .searched-movies {
     display: flex;
-    padding: 20px;
+    padding: 0px;
     box-sizing: border-box;
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
+  }
+  .page-div{
+    display: flex;
+    padding-top:0px;
+    justify-content: center;
+  }
+  h1{
+    text-align: center;
+    color:white;
+    font-size: 55px;
+    margin:10px auto;
   }
 </style>

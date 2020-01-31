@@ -3,8 +3,8 @@
     <nuxt-link :to="'/movies/' + movieInstance.imdbID">
         <div class="card">
           <div class="upper">
-            <img v-if="movieInstance.Poster" :src="movieInstance.Poster" >
-            <img v-else src="https://www.tate.org.uk/art/images/work/L/L01/L01682_10.jpg">
+            <img v-if="movieInstance.Poster==='N/A'" src="~/static/undefinedPic.jpg">
+            <img v-else :src="movieInstance.Poster" >
           </div>
           <div class="lower">
             <div class="movie-content">
@@ -26,7 +26,7 @@ import { mapActions } from 'vuex'
     name: 'MoviePreview',
     data(){
       return{
-        undefinedPoster: String
+        undefinedPoster: "N/A"
       }
     },
     props: {
@@ -36,17 +36,7 @@ import { mapActions } from 'vuex'
       ...mapActions('favMovies',[
           'storeMovie'
           ])
-        
-      },
-      async asyncData({$axios}){
-        let res = $axios.get('https://www.tate.org.uk/art/images/work/L/L01/L01682_10.jpg')
-        return res.data
-      },
-      mounted(){
-        console.log(this.data)
       }
-        
-    
 }
   
 
@@ -56,14 +46,13 @@ import { mapActions } from 'vuex'
 
   .card {
     border: 1px solid #ccc;
-    background-color: rgb(0, 138, 255);
-    width: 90%;
-    
+    background-color: rgb(11, 37, 59);
+    height:450px;
   }
 
   a {
     text-decoration: none;
-    color: black;
+    color: white;
   }
 
   @media (min-width: 850px) {
@@ -78,29 +67,35 @@ import { mapActions } from 'vuex'
     text-align: center;
   }
 
-  a:hover .movie-content,
-  a:active .movie-content {
-    background-color: #ccc;
+  .card:hover
+   {
+    background-color: rgb(94, 92, 92);
   }
-
-    .featured-movies {
-    display: flex;
-    padding: 20px;
-    box-sizing: border-box;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
+  .card:active{
+    background-color: #ccc
   }
 
 .upper {
+    padding:5px;
+    display: flex;
+    justify-content: center;
+    height:75%;
+}
+.lower{
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: hidden
+    overflow: hidden;
+    height: 25%;
 }
-.fill img {
-    flex-shrink: 0;
-    min-width: 100%;
-    min-height: 100%
+img {   
+min-width: 100%;
+min-height: 100%;
+object-fit:contain;
+
 }
+h1{
+  padding:0px auto;
+}
+
 </style>
