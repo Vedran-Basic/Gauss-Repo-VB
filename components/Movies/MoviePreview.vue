@@ -24,11 +24,6 @@ import { mapActions } from 'vuex'
 
   export default {
     name: 'MoviePreview',
-    data(){
-      return{
-        undefinedPoster: "N/A"
-      }
-    },
     props: {
       movieInstance : Object
   },

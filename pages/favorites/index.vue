@@ -1,31 +1,44 @@
 <template>
-  <div class=container>
-    <div id="LoadUserButton">
-      <span v-if="this.Response==='False'"> {{this.Error}} </span>
-      <nuxt-child />
-      <br>
-    </div>
+  <div class="container">
+    {{  }}
+    <MoviePreview v-if="isEmpty"/>
   </div>
 </template>
 
 
+
 <script>
-  import pagination from '~/components/pagination'
+  import {mapState} from 'vuex'
+  import MoviePreview from '~/components/Movies/MoviePreview'
   export default {
-    data() {
-      return {
-        inputText: ''
-      }
+    components:{
+      MoviePreview
     },
-    methods: {
-      logConsole() {
-        
-      }
+    async asyncData(){
+
     },
-    components: {
-      pagination
-    }
+    computed:{/*
+          ...mapState('favMovies',{
+            favMoviesList: 'favMoviesList'
+          }),
+          isEmpty(){
+            if(favMoviesList.length === 0)return false 
+            return true
+          }
+        },*/
+        methods: {
+          removeFromFavs(){
+            this.$store.dispatch('favMovies/removeFromFavorites', this.movie.imdbID)
+          },
+          
+
+      }
   }
 
-
+  }
 </script>
+
+
+<style scoped>
+
+</style>

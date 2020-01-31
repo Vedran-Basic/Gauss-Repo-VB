@@ -36,11 +36,7 @@
     },
     async asyncData({store, params, $axios}) {
       const movieSingle = await store.dispatch('favMovies/fetchSingleMovie', {omdbID: params.id, $axios})
-},
-async mounted(){
-
-  //await this.$store.dispatch('favMovies/fetchSingleMovie', this.$route.params.id)
-},
+    },
     computed:{
       ...mapState('favMovies',{
         movieState: 'currentMovie'
@@ -69,7 +65,7 @@ async mounted(){
 
       }
 
-  },
+  }
   }
 </script>
 
