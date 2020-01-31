@@ -15,7 +15,9 @@
       MoviePreview
     },
     data(){
-      
+      return{
+        userIsActive:true
+      }
     },
     async asyncData({store, $axios}){
       store.dispatch('favMovies/getFavorites')

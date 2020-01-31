@@ -1,7 +1,5 @@
 <template>
   <div class="container">
-    <searchbar searchText="" :search-content="searchContent" />
-
     <div v-if="this.data.Response !== 'False' ">
             <h1> Search results:</h1>
 
@@ -22,16 +20,9 @@
 <script>
   import MoviePreview from '~/components/Movies/MoviePreview'
   import pagination from '~/components/pagination'
-  import searchbar from '~/components/searchbar'
   export default {
-    data(){
-      return{
-        searchContent:this.$route.query.results
-        }
-    },
-    
     components: {
-      MoviePreview, pagination, searchbar
+      MoviePreview, pagination
     },
     watchQuery(newQuery, oldQuery){
       if(oldQuery!=newQuery)

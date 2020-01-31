@@ -20,7 +20,7 @@
             <li class="inactive"> {{ Number(this.$route.query.pageNumber) + 1}} </li>
           </nuxt-link>
 
-          <li v-if="$route.query.pageNumber < lastPage - 2"> ... </li>
+          <li v-if="$route.query.pageNumber < lastPage - 2 || $route.query.pageNumber === undefined "> ... </li>
           <nuxt-link v-if="$route.query.pageNumber === undefined || $route.query.pageNumber !== lastPage" :to="{ path: '/search', query: { results:this.$route.query.results, pageNumber: lastPage } }"> 
             <li class="inactive">  {{ lastPage }} </li>
           </nuxt-link>
@@ -48,41 +48,5 @@
   }
 </script>
 <style scoped>
-
-.top-pages{
-  display:inline;
-  list-style:none;
-  
-}
-.search-button{
-  display: inline;
-}
-
-
-.pagination {
-  display: inline-block;
-}
-
-.pagination li{
-  color: black;
-  float: left;
-  padding: 20px 16px;
-  text-decoration: none;
-  margin:3px;
-  font-size: 50px;
-  background-color:;
-}
-
-  .inactive:hover ,
-  .inactive:active{
-    background-color: grey;
-    cursor:pointer;
-  }
-
-  li{
-      background-color:slategrey;
-  }
-  .current-page{
-    background-color: rgb(66,66,66);
-  }
+@import "~/assets/pagination.css";
 </style>

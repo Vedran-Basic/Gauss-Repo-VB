@@ -7,6 +7,7 @@
           <div class="navbar-item"> <nuxt-link :to="'/favorites'"> Favorites </nuxt-link> </div>
           <div class="navbar-item"> <nuxt-link :to="'about'"> About </nuxt-link> </div>
         </div>
+        <searchbar searchText="" :search-content="searchContent" />
       </nav>
     </div>
   </header>

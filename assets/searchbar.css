@@ -28,7 +28,7 @@
   height:55px;
   overflow: hidden;
   color: white;
-  background-color: rgba(0, 38, 255, 0.35);
+  background-color: rgba(162, 0, 255, 0.45);
   border-radius: 10px;
   border: none;
   float: left;
@@ -36,6 +36,6 @@
 }
 
 .search-button:hover{
-  background-color:rgba(0, 38, 255, 1);
+  background-color: rgba(162, 0, 255, 1);
   cursor: pointer;
 }

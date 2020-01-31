@@ -1,8 +1,5 @@
 <template>
   <div class="container">
-    <div class="search-bar">
-      <searchbar searchText="" :search-content="searchContent" />
-    </div>
       <div class="card">
         <div class="left">
           <img class="image" :src="movie.Poster" >
@@ -24,16 +21,11 @@
 
 <script>
   import {mapState} from 'vuex'
-  import searchbar from '~/components/searchbar'
-
   export default {
     data(){
       return{
         searchContent: ''
       }
-    },
-    components:{
-      searchbar
     },
     async asyncData({store, params, $axios}) {
       const movieSingle = await store.dispatch('favMovies/fetchSingleMovie', {omdbID: params.id, $axios})
