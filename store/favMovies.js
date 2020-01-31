@@ -25,7 +25,7 @@ export const actions = {
     removeFromFavorites({commit}, data){
         commit('removeFromFavs', data)
     },
-    fetchSingleMovie({commit}, payload){
+    async fetchSingleMovie({commit}, payload){
         console.log(" bla2")
         payload.$axios.get(`http://www.omdbapi.com/?apikey=dd5fbf0a&i=${payload.omdbID}`).then(({data})=>{
         commit('tempStoreMovie', data)

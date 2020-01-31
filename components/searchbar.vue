@@ -1,8 +1,8 @@
 <template>
   <div class="search-input">
-    <input type="text" v-model="searchQuery" class="input-style" @keyup.enter="onSearch">
+    <input type="text" v-model="searchQuery" class="input-style"  @keyup.enter="onSearch">
     
-    <button  class="search-button" @click="onSearch" > Search </button>
+    <button  class="search-button" @click="onSearch()"  > Search </button>
   </div>
 </template>
 
