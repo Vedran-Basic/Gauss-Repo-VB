@@ -28,6 +28,10 @@ export const actions = {
     async fetchSingleMovie({commit}, payload){
         let res = await this.$axios.get(`http://www.omdbapi.com/?apikey=dd5fbf0a&i=${payload.omdbID}`)
         commit('tempStoreMovie', res.data)
+    },
+    async getFavorites({commit}, payload){
+        let res = await this.$axios.get(`http://www.omdbapi.com/?apikey=dd5fbf0a&i=${payload}`)
+        return res
     }
 
 

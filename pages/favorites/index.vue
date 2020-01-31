@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     {{  }}
-    <MoviePreview v-if="isEmpty"/>
+    <MoviePreview v-if="false"/>
   </div>
 </template>
 
@@ -14,18 +14,12 @@
     components:{
       MoviePreview
     },
-    async asyncData(){
-
+    data(){
+      
     },
-    computed:{/*
-          ...mapState('favMovies',{
-            favMoviesList: 'favMoviesList'
-          }),
-          isEmpty(){
-            if(favMoviesList.length === 0)return false 
-            return true
-          }
-        },*/
+    async asyncData({store, $axios}){
+      store.dispatch('favMovies/getFavorites')
+    },
         methods: {
           removeFromFavs(){
             this.$store.dispatch('favMovies/removeFromFavorites', this.movie.imdbID)
@@ -33,8 +27,6 @@
           
 
       }
-  }
-
   }
 </script>
 

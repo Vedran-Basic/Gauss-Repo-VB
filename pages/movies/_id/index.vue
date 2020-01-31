@@ -11,10 +11,11 @@
           <h1> {{movie.Title}} </h1>
           <hr>
           <p class="about"> {{movie.Plot}}</p>
+          
           <button v-if="isInFavorites" @click="addToFavs()" class="my-button"> Add to favorites </button>
           <button v-if="!isInFavorites" @click="removeFromFavs()" class="my-button"> Remove from favorites </button>
-
         </div>
+        
       </div>
 
 
@@ -91,10 +92,7 @@
     position:relative;
     color:white;
     width:60%;
-    height: inherit;
     float:left;
-    height:1000px;
-
     border-radius:0 10px 10px 0;
   }
 
@@ -149,11 +147,9 @@
   }
 
   .right button{
-    
     position:absolute;
     bottom:0px;
-    right:20px;
-
+    right:0px;
   }
 </style>
 
