@@ -2,7 +2,7 @@
   <div class="container">
 
       <section class="featured-movies">
-        <movie-preview v-for="item in data.Search" :key="item.imdbID" :movie-instance="item" />
+        <movie-preview v-for="item in data.Search" :key="item.imdbID" :movie-instance="item" @addToFavs="addToFavorites" @removeFromFavs="removeFromFavorites"/>
       </section>
       
   </div>
@@ -20,10 +20,17 @@
       MoviePreview
     },
 
-
     async asyncData({ params, $axios }) {
       let { data } = await $axios.get('http://www.omdbapi.com/?apikey=dd5fbf0a&s=Batman')
       return { data }
+    },
+    methods:{
+      addToFavorites($event){
+        this.$store.dispatch('favMovies/addToFavorites', $event)
+      },
+      removeFromFavorites($event){
+        this.$store.dispatch('favMovies/removeFromFavorites', $event)
+      }
     }
   }
 </script>

@@ -41,7 +41,7 @@
       isInFavorites(){
         let isIt= false
         this.$store.state.favMovies.favMoviesList.forEach((item)=>{
-          if(item===this.movie.imdbID){
+          if(item.imdbID===this.movie.imdbID){
             isIt=true
           }
           })
@@ -51,10 +51,10 @@
     },
     methods: {
       addToFavs(){
-        this.$store.dispatch('favMovies/addToFavorites', this.movie.imdbID)
+        this.$store.dispatch('favMovies/addToFavorites', this.movie)
       },
       removeFromFavs(){
-        this.$store.dispatch('favMovies/removeFromFavorites', this.movie.imdbID)
+        this.$store.dispatch('favMovies/removeFromFavorites', this.movie)
 
       }
 

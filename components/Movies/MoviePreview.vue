@@ -1,7 +1,7 @@
 <template>
   <div>
+    <div class="card">
     <nuxt-link :to="'/movies/' + movieInstance.imdbID" @click="storeMovie(movieInstance)">
-        <div class="card">
           <div class="upper">
             <img class="movie-pic" v-if="movieInstance.Poster==='N/A'" src="~/static/undefinedPic.jpg">
             <img v-else class="movie-pic" :src="movieInstance.Poster" >
@@ -13,9 +13,18 @@
            
             </div>
           </div>
-        </div>
     </nuxt-link>
-    <img class="star-icon" src="https://img.icons8.com/color/48/000000/star--v1.png">
+    <div class="star-icon">
+
+      <div class="absolute" v-if="isInFavorites" @click="addToFavs">
+        <img v-if="isInFavorites" class="empty-star" src="@/static/empty-star.png" >
+      </div>
+      <div class="absolute" v-if="!isInFavorites" @click="removeFromFavs">
+        <img v-if="!isInFavorites" class="full-star" src="@/static/full-star.png">
+      </div>
+    </div>
+  </div>
+    
   </div>
 </template>
 
@@ -26,11 +35,30 @@ import { mapActions } from 'vuex'
     name: 'MoviePreview',
     props: {
       movieInstance : Object
-  },
+      },
       methods:{
-      ...mapActions('favMovies',[
+        ...mapActions('favMovies',[
           'storeMovie'
-          ])
+          ]),
+          addToFavs(){
+            this.$emit('addToFavs', this.movieInstance)
+          },
+          removeFromFavs(){
+            this.$emit('removeFromFavs', this.movieInstance)
+          }
+      },
+      computed:{
+        isInFavorites(){
+          let isIt= false
+          let favorites = this.$store.getters['favMovies/getFavMoviesList']
+          favorites.forEach((item)=>{
+            if(item.imdbID===this.movieInstance.imdbID){
+              isIt=true
+            }
+          })
+            return !isIt  
+      }
+
       }
 }
   
@@ -92,11 +120,40 @@ object-fit:contain;
 h1{
   padding:0px auto;
 }
+
 .star-icon{
-  padding:0;
-  margin:0;
+  height: 30px;
+  width:30px;  
+  position: relative;
+}
+.absolute{
+  position: absolute;
+  bottom:30px;
+  left:1px;
+  background-color:#B458B1;
+  padding:5px;
+  cursor:pointer;
+
+}
+.full-star{
   height: 30px;
   width:30px;
+  padding:0;
+  margin:0;
 }
+.empty-star{
+  height: 30px;
+  width:30px;
+  padding:0;
+  margin:0;  
+}
+
+.absolute:hover{
+  background-color: #7156E8;
+}
+.absolute:active{
+  background-color:#ccc;
+}
+
 
 </style>

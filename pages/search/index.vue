@@ -7,7 +7,7 @@
         <pagination :total="data.totalResults"/>
       </div>
       <section class="searched-movies">
-        <movie-preview v-for="item in data.Search" :key="item.imdbID" :movie-instance="item" />
+        <movie-preview v-for="item in data.Search" :key="item.imdbID" :movie-instance="item" @addToFavs="addToFavorites" @removeFromFavs="removeFromFavorites"/>
       </section>
       <div class="page-div">
         <pagination :total="data.totalResults"/>
@@ -39,6 +39,14 @@
         let { data }= await $axios.get(`http://www.omdbapi.com/?apikey=dd5fbf0a&s=${route.query.results}&page=${route.query.pageNumber}&type=movie`)
         return { data }
         }
+      },
+    methods:{
+      addToFavorites($event){
+        this.$store.dispatch('favMovies/addToFavorites', $event)
+      },
+      removeFromFavorites($event){
+        this.$store.dispatch('favMovies/removeFromFavorites', $event)
+      }
       }
       
   }
