@@ -14,7 +14,8 @@
             </div>
           </div>
     </nuxt-link>
-    <div class="star-icon">
+  </div>
+  <div class="star-icon">
 
       <div class="absolute" v-if="isInFavorites" @click="addToFavs">
         <img v-if="isInFavorites" class="empty-star" src="@/static/empty-star.png" >
@@ -23,7 +24,6 @@
         <img v-if="!isInFavorites" class="full-star" src="@/static/full-star.png">
       </div>
     </div>
-  </div>
     
   </div>
 </template>
@@ -103,6 +103,7 @@ import { mapActions } from 'vuex'
     display: flex;
     justify-content: center;
     height:75%;
+    margin:0px;
 }
 .lower{
     display: flex;
@@ -110,6 +111,7 @@ import { mapActions } from 'vuex'
     align-items: center;
     overflow: hidden;
     height: 25%;
+    margin:0px;
 }
 .movie-pic {   
 min-width: 100%;
@@ -128,8 +130,8 @@ h1{
 }
 .absolute{
   position: absolute;
-  bottom:30px;
-  left:1px;
+  bottom:41px;
+  left:12px;
   background-color:#B458B1;
   padding:5px;
   cursor:pointer;
