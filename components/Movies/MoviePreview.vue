@@ -127,6 +127,7 @@ h1{
   height: 30px;
   width:30px;  
   position: relative;
+  margin-bottom:-35px;
 }
 .absolute{
   position: absolute;
