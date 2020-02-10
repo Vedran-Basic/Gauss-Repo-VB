@@ -1,10 +1,9 @@
 <template>
   <div class="container">
 
-      <section class="featured-movies">
-        <movie-preview v-for="item in data.Search" :key="item.imdbID" :movie-instance="item" @addToFavs="addToFavorites" @removeFromFavs="removeFromFavorites"/>
-      </section>
-      
+    <section class="featured-movies">
+      <movie-preview v-for="item in movies" :key="item.imdbID" :movies="item" @addToFavs="addToFavorites" @removeFromFavs="removeFromFavorites" />
+    </section>
   </div>
 </template>
 
@@ -13,7 +12,7 @@
   export default {
     data(){
       return{
-        searchContent:this.$route.query.results
+        searchContent: this.$route.query.results,
         }
     },
     components: {
@@ -22,16 +21,17 @@
 
     async asyncData({ params, $axios }) {
       let { data } = await $axios.get('http://www.omdbapi.com/?apikey=dd5fbf0a&s=Batman')
-      return { data }
+      return { movies: data.Search }
     },
     methods:{
-      addToFavorites($event){
+      addToFavorites($event) {
         this.$store.dispatch('favMovies/addToFavorites', $event)
       },
       removeFromFavorites($event){
         this.$store.dispatch('favMovies/removeFromFavorites', $event)
       }
-    }
+    },
+
   }
 </script>
 
@@ -52,5 +52,12 @@
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
+  }
+
+  .card-text{
+    display:flex;
+    text-align:center;
+    justify-content:center;
+    padding:5px;
   }
 </style>

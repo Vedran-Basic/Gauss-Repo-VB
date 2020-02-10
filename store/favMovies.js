@@ -20,7 +20,7 @@ export const mutations = {
             }
         })
     },
-    addToFavs(state, payload){
+  addToFavs(state, payload) {
         state.favMoviesList.push(payload)
     }
 }
@@ -29,7 +29,7 @@ export const actions = {
     storeMovie({commit}, data){
         commit('tempStoreMovie', data)
     },
-    addToFavorites({commit}, data){
+  addToFavorites({ commit }, data) {
         commit('addToFavs', data)
     },
     removeFromFavorites({commit}, data){

@@ -1,15 +1,16 @@
 <template>
   <div class="container">
     <div v-if="this.data.Response !== 'False' ">
-            <h1> Search results:</h1>
+      <h1> Search results:</h1>
 
-      <div class="page-div">
+      <div class="pagination-div">
         <pagination :total="data.totalResults"/>
       </div>
       <section class="searched-movies">
-        <movie-preview v-for="item in data.Search" :key="item.imdbID" :movie-instance="item" @addToFavs="addToFavorites" @removeFromFavs="removeFromFavorites"/>
+        <movie-preview v-for="item in data.Search" :key="item.imdbID" :movies="item" @addToFavs="addToFavorites" @removeFromFavs="removeFromFavorites"/>
       </section>
-      <div class="page-div">
+
+      <div class="pagination-div">
         <pagination :total="data.totalResults"/>
       </div>
     </div>
@@ -72,7 +73,7 @@
   text-align: center;
   font-family: "Times New Roman", Times, serif;
   font-size: 50px;
-  color: white;
+  color: black;
 }
 
   .searched-movies {
@@ -83,14 +84,14 @@
     align-items: center;
     justify-content: center;
   }
-  .page-div{
+  .pagination-div{
     display: flex;
     padding-top:0px;
     justify-content: center;
   }
   h1{
     text-align: center;
-    color:white;
+    color:black;
     font-size: 55px;
     margin:10px auto;
   }

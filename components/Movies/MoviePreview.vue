@@ -1,30 +1,53 @@
 <template>
   <div>
-    <div class="card">
-    <nuxt-link :to="'/movies/' + movieInstance.imdbID" @click="storeMovie(movieInstance)">
-          <div class="upper">
-            <img class="movie-pic" v-if="movieInstance.Poster==='N/A'" src="~/static/undefinedPic.jpg">
-            <img v-else class="movie-pic" :src="movieInstance.Poster" >
-          </div>
-          <div class="lower">
-            <div class="movie-content">
-            
-              <h1> {{ movieInstance.Title }}  ({{ movieInstance.Year }}) </h1>
-           
-            </div>
-          </div>
-    </nuxt-link>
-  </div>
-  <div class="star-icon">
+    <v-container>
+      <v-row align="center" justify="center">
+        <v-col cols="12" sm="12">
+          <v-hover v-slot:default="{ hover }" >
+            <v-card height="435" width="300" :class="{ 'on-hover': hover }" dark>
+              <nuxt-link :to="'/movies/' + movies.imdbID" @click="storeMovie(movie)" >
+                <v-img v-if="Poster==='N/A'"
+                       class="black--text align-center"
+                       src="undefinedPic.jpg"
+                       height="300"
+                       width="300"
+                       contain>
+                </v-img>
+                <v-img v-if="Poster!=='N/A'"
+                       class="black--text align-center"
+                       :src="Poster"
+                       height="300"
+                       width="300"
+                       contain>
+                </v-img>
 
-      <div class="absolute" v-if="isInFavorites" @click="addToFavs">
-        <img v-if="isInFavorites" class="empty-star" src="@/static/empty-star.png" >
-      </div>
-      <div class="absolute" v-if="!isInFavorites" @click="removeFromFavs">
-        <img v-if="!isInFavorites" class="full-star" src="@/static/full-star.png">
-      </div>
-    </div>
-    
+                <div class="card-text">
+                  <h3> {{ Title }} ({{ Year }}) </h3>
+                </div>
+              </nuxt-link>
+              <v-btn v-if="isInFavorites"
+                     @click="addToFavs"
+                     color="orange"
+                     text
+                     absolute
+                     bottom
+                     right>
+                Add to favorites
+              </v-btn>
+              <v-btn v-if="!isInFavorites"
+                     @click="removeFromFavs"
+                     color="orange"
+                     text
+                     absolute
+                     bottom
+                     right>
+                Remove from Favorites
+              </v-btn>
+            </v-card>
+          </v-hover>
+        </v-col>
+      </v-row>
+    </v-container>
   </div>
 </template>
 
@@ -33,18 +56,25 @@ import { mapActions } from 'vuex'
 
   export default {
     name: 'MoviePreview',
+    data() {
+      return {
+        Poster: this.movies.Poster,
+        Title: this.movies.Title,
+        Year: this.movies.Year
+      }
+    },
     props: {
-      movieInstance : Object
+      movies : Object
       },
       methods:{
         ...mapActions('favMovies',[
           'storeMovie'
           ]),
-          addToFavs(){
-            this.$emit('addToFavs', this.movieInstance)
+        addToFavs() {
+            this.$emit('addToFavs', this.movies)
           },
           removeFromFavs(){
-            this.$emit('removeFromFavs', this.movieInstance)
+            this.$emit('removeFromFavs', this.movies)
           }
       },
       computed:{
@@ -52,7 +82,7 @@ import { mapActions } from 'vuex'
           let isIt= false
           let favorites = this.$store.getters['favMovies/getFavMoviesList']
           favorites.forEach((item)=>{
-            if(item.imdbID===this.movieInstance.imdbID){
+            if(item.imdbID===this.movies.imdbID){
               isIt=true
             }
           })
@@ -67,96 +97,19 @@ import { mapActions } from 'vuex'
 
 <style scoped>
 
-  .card {
-    border: 1px solid #ccc;
-    background-color: rgb(11, 37, 59);
-    height:450px;
-  }
 
   a {
     text-decoration: none;
     color: white;
   }
 
-  @media (min-width: 850px) {
-    .card {
-      width: 400px;
-      margin: 10px;
-    }
-  }
-  
-  .movie-content {
-    padding: 10px;
-    text-align: center;
+  .v-card {
+    transition: background-color .2s ease-in-out;
   }
 
-  .card:hover
-   {
-    background-color: rgb(94, 92, 92);
+  .v-card:not(.on-hover) {
+    background-color:rgb(38, 36, 36);
   }
-  .card:active{
-    background-color: #ccc
-  }
-
-.upper {
-    padding:5px;
-    display: flex;
-    justify-content: center;
-    height:75%;
-    margin:0px;
-}
-.lower{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-    height: 25%;
-    margin:0px;
-}
-.movie-pic {   
-min-width: 100%;
-min-height: 100%;
-object-fit:contain;
-
-}
-h1{
-  padding:0px auto;
-}
-
-.star-icon{
-  height: 30px;
-  width:30px;  
-  position: relative;
-  margin-bottom:-35px;
-}
-.absolute{
-  position: absolute;
-  bottom:41px;
-  left:12px;
-  background-color:#B458B1;
-  padding:5px;
-  cursor:pointer;
-
-}
-.full-star{
-  height: 30px;
-  width:30px;
-  padding:0;
-  margin:0;
-}
-.empty-star{
-  height: 30px;
-  width:30px;
-  padding:0;
-  margin:0;  
-}
-
-.absolute:hover{
-  background-color: #7156E8;
-}
-.absolute:active{
-  background-color:#ccc;
-}
 
 
 </style>

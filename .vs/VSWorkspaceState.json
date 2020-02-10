@@ -3,11 +3,13 @@
     "",
     "\\assets",
     "\\components",
+    "\\components\\Movies",
+    "\\layouts",
     "\\pages",
-    "\\pages\\movies",
-    "\\pages\\movies\\_id",
+    "\\pages\\search",
+    "\\static",
     "\\store"
   ],
-  "SelectedNode": "\\components\\searchbar.vue",
+  "SelectedNode": "\\layouts\\error.vue",
   "PreviewInSolutionExplorer": false
 }
