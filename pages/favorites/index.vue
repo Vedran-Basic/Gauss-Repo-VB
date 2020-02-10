@@ -25,11 +25,14 @@
         
       </template>
     </v-data-table>
+
+    <v-snackbar v-model="snackbar" :timeout="timeout">
+      {{ snackBarText }}
+      <v-btn color="blue" text @click="snackbar = false">Close</v-btn>
+    </v-snackbar>
     
   </div>
 </template>
-
-
 
 <script>
   import { mapGetters } from 'vuex'
@@ -51,7 +54,10 @@
           },
           { text: 'Year',align: 'start', value: 'Year' }
         ],
-        movies:[]
+        movies:[],
+        snackBarText: '',
+        snackbar: false,
+        timeout: 2000
       }
     },
     mounted(){
@@ -59,6 +65,9 @@
     },
     methods: {
       removeFromFavs(item) {
+        this.snackbar=false
+        this.snackBarText="Removed from favorites"
+        this.snackbar=true
         this.$store.dispatch('favMovies/removeFromFavorites', item)
       },
       redirectToMovie(imdbID){

@@ -43,11 +43,16 @@
                      right>
                 Remove from Favorites
               </v-btn>
+              <v-snackbar v-model="snackbar" :timeout="timeout">
+                  {{ snackBarText }}
+                  <v-btn color="blue" text @click="snackbar = false">Close</v-btn>
+              </v-snackbar>
             </v-card>
           </v-hover>
         </v-col>
       </v-row>
     </v-container>
+
   </div>
 </template>
 
@@ -60,7 +65,10 @@ import { mapActions } from 'vuex'
       return {
         Poster: this.movies.Poster,
         Title: this.movies.Title,
-        Year: this.movies.Year
+        Year: this.movies.Year,
+        snackBarText: '',
+        snackbar: false,
+        timeout: 2000
       }
     },
     props: {
@@ -71,9 +79,15 @@ import { mapActions } from 'vuex'
           'storeMovie'
           ]),
         addToFavs() {
+            this.snackbar=false
+            this.snackBarText="Added to favorites"
+            this.snackbar=true
             this.$emit('addToFavs', this.movies)
           },
           removeFromFavs(){
+            this.snackbar=false
+            this.snackBarText="Removed from favorites"
+            this.snackbar=true
             this.$emit('removeFromFavs', this.movies)
           }
       },
@@ -108,7 +122,7 @@ import { mapActions } from 'vuex'
   }
 
   .v-card:not(.on-hover) {
-    background-color:rgb(56, 53, 53);
+    background-color:rgb(41, 37, 37);
   }
 
 
