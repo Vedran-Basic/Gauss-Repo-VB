@@ -108,7 +108,7 @@ import { mapActions } from 'vuex'
   }
 
   .v-card:not(.on-hover) {
-    background-color:rgb(38, 36, 36);
+    background-color:rgb(56, 53, 53);
   }
 
 
