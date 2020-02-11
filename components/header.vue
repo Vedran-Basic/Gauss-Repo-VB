@@ -1,39 +1,39 @@
 <template>
   <header>
-    <div class="navbar-container">
-      <nav>
-      <v-container >
-        <v-row>
-          <v-col cols="12" sm="4">
-            <nuxt-link :to="'/'">
-              <v-card hover height="100%" width="100%" :color="navColor" >  
-                <v-card-title>Home</v-card-title>
-              </v-card>
-            </nuxt-link>
-          </v-col>
-        
-          <v-col cols="12" sm="4">
-            <nuxt-link :to="'/favorites'">
-              <v-card hover height="100%" width="100%" :color="navColor">
-                <v-card-title>Favorites</v-card-title>  
-              </v-card>
-            </nuxt-link>
-          </v-col>
-        
-          <v-col cols="12" sm="4" >
-            <nuxt-link :to="'/about'">
-              <v-card hover height="100%" width="100%" :color="navColor">
-                <v-card-title >About</v-card-title>
-              </v-card>
-            </nuxt-link>
-          </v-col>
-        
-        </v-row>
-      </v-container>
-      
-        
-      </nav>
-      <searchbar searchText="" :search-content="searchContent" />
+    <div class="img-whitener">  
+      <div class="navbar-container">
+        <nav>
+          <v-container >
+            <v-row>
+              <v-col cols="12" sm="4">
+                <nuxt-link :to="'/'">
+                  <v-card hover height="100%" width="100%" :color="navColor" >  
+                    <v-card-title>Home</v-card-title>
+                  </v-card>
+                </nuxt-link>
+              </v-col>
+            
+              <v-col cols="12" sm="4">
+                <nuxt-link :to="'/favorites'">
+                  <v-card hover height="100%" width="100%" :color="navColor">
+                    <v-card-title>Favorites</v-card-title>  
+                  </v-card>
+                </nuxt-link>
+              </v-col>
+            
+              <v-col cols="12" sm="4" >
+                <nuxt-link :to="'/about'">
+                  <v-card hover height="100%" width="100%" :color="navColor">
+                    <v-card-title >About</v-card-title>
+                  </v-card>
+                </nuxt-link>
+              </v-col>
+            
+            </v-row>
+          </v-container>
+        </nav>
+        <searchbar searchText="" :search-content="searchContent" />
+      </div>
     </div>
   </header>
 </template>
@@ -44,6 +44,9 @@
 .v-container{
   display:flex;
   justify-content: center;
+}
+.img-whitener{
+  background-color: rgb(255,255,255)
 }
 
 </style>

@@ -14,9 +14,7 @@ nav {
   font-size: 22px;
   font-weight: 900;
 }
-div.container{
-  
-}
+
 div.container .row{
   justify-content: center;
   padding:0px;
@@ -31,8 +29,8 @@ nav a {
   .navbar-container {
     display:flex;
     flex-direction: column;
-    background-image: url('/HeaderPic.jpg');
     background-position: top;
+    background-image: url('/HeaderPic.jpg');
     background-size: cover;
     overflow: auto;
   }
