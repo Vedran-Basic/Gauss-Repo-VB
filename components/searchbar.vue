@@ -1,8 +1,22 @@
 <template>
   <div class="search-container">
-    <input type="text" v-model="searchQuery" class="input-style"  @keyup.enter="onSearch">
-    
-    <button  class="search-button" @click="onSearch()"  > Search </button>
+    <div class="text-field">
+     <v-text-field
+        v-model="searchQuery"
+        background-color="rgb(255,255,255)"
+        rounded outlined
+        color="white"
+        label="Search"
+        autocomplete
+        @keyup.enter="onSearch()"
+      >
+      </v-text-field>
+      <v-btn class="search-magnifier" icon @click="onSearch()" >
+        <v-icon>mdi-magnify</v-icon>
+      </v-btn>
+    </div>
+
+
   </div>
 </template>
 

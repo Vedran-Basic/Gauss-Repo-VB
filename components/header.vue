@@ -4,33 +4,26 @@
       <nav>
       <v-container >
         <v-row>
-          <v-col cols="12" sm="2">
+          <v-col cols="12" sm="4">
             <nuxt-link :to="'/'">
-
-              <v-card elevation="4" height="50" width="400px">  
-                <v-card-text>
-                  Home  
-                </v-card-text>
+              <v-card hover height="100%" width="100%" :color="navColor" >  
+                <v-card-title>Home</v-card-title>
               </v-card>
             </nuxt-link>
           </v-col>
         
-          <v-col cols="12" sm="2">
+          <v-col cols="12" sm="4">
             <nuxt-link :to="'/favorites'">
-              <v-card elevation="4" height="50" width="200">  
-              <v-card-text>
-                Favorites  
-              </v-card-text>  
+              <v-card hover height="100%" width="100%" :color="navColor">
+                <v-card-title>Favorites</v-card-title>  
               </v-card>
             </nuxt-link>
           </v-col>
         
-          <v-col cols="12" sm="2" height="50" width="200">
-            <nuxt-link :to="'about'">
-              <v-card elevation="4">
-                <v-card-text>
-                  Home  
-                </v-card-text>
+          <v-col cols="12" sm="4" >
+            <nuxt-link :to="'/about'">
+              <v-card hover height="100%" width="100%" :color="navColor">
+                <v-card-title >About</v-card-title>
               </v-card>
             </nuxt-link>
           </v-col>
@@ -59,6 +52,11 @@
   import searchbar from "~/components/searchbar";
 
   export default {
+    data(){
+      return{
+        navColor: "rgb(162, 232, 228)"
+      }
+    },
     components: {
       searchbar
     },
