@@ -4,11 +4,21 @@
     <v-data-table v-model="selected"
                   :headers="headers"
                   :items="movies"
+                  :search="searchFavorites"
+                  :custom-filter="filterByTitle"
                   item-key="name"
                   class="elevation-1 table"
-                  hide-default-footer
                   hide-default-header
+                  hide-default-footer
                   >
+
+      <template v-slot:header>
+        <v-text-field
+        v-model="searchFavorites"
+        label="Search favorites"
+        single-line
+      ></v-text-field>
+      </template>
 
       <template v-slot:body="{ items }">
         <tbody>
@@ -43,13 +53,15 @@
     },
     data(){
       return {
+        searchFavorites: "",
         selected: [],
         headers: [
           { text: " ", align: 'left', value: "Poster", sortable: false, 
          },
           {
+            name:"title",
             text: 'Movie title',
-            sortable: true,
+            sortable: false,
             value: 'Title',
           },
           { text: 'Year',align: 'start', value: 'Year' }
@@ -70,10 +82,14 @@
         this.snackbar=true
         this.$store.dispatch('favMovies/removeFromFavorites', item)
       },
+      
       redirectToMovie(imdbID){
         this.$router.push("/movies/" + imdbID)
+      },
+      filterByTitle(value, search, item){
+        return item.Title.toLowerCase().includes(search.toLowerCase())
       }
-    }
+    },
 
   }
 </script>
@@ -111,4 +127,7 @@
   cursor:default;
 }
 
+table .v-input {
+  padding-left:15px;
+}
 </style>

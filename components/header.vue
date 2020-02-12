@@ -2,7 +2,7 @@
   <header>
     <div class="navbar-container">
       <nav>
-        <v-container >
+        <v-container>
           <v-row>
             <v-col cols="12" sm="4">
               <nuxt-link :to="'/'">

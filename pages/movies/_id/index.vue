@@ -1,5 +1,37 @@
 <template>
   <div class="container">
+      <v-card dark>
+        <v-container>
+          <v-row flex-row justify="space-between">
+            <v-col cols="4">
+              <v-img
+                max-height="auto"
+                max-width="900"
+                :src="movie.Poster"
+                fill
+              ></v-img>
+            </v-col>
+
+            <v-col cols="6" class="text-center" >
+              <v-row class="flex-column" justify="center">
+                <v-col cols="12" >
+                  <h1> {{ movie.Title }} ({{ movie.Year }})</h1>
+                </v-col>
+              </v-row>
+              <v-row class="flex-column" justify="center" >
+                <v-col>
+                  <p> {{ movie.Plot }} </p>
+                </v-col>
+              </v-row>
+                <v-spacer></v-spacer>
+                
+                <v-btn v-if="isInFavorites" @click="addToFavs()" class="my-button"> Add to favorites </v-btn>
+                <v-btn v-if="!isInFavorites" @click="removeFromFavs()" class="my-button"> Remove from favorites </v-btn>
+            </v-col>
+
+          </v-row>
+        </v-container>
+      </v-card>
       <div class="card">
         <div class="left">
           <img class="image" :src="movie.Poster" >
@@ -9,13 +41,10 @@
           <hr>
           <p class="about"> {{movie.Plot}}</p>
           
-          <button v-if="isInFavorites" @click="addToFavs()" class="my-button"> Add to favorites </button>
-          <button v-if="!isInFavorites" @click="removeFromFavs()" class="my-button"> Remove from favorites </button>
+          
         </div>
         
       </div>
-
-
   </div>
 </template>
 
@@ -66,68 +95,7 @@
 .searchbar{
   display: inline-block;
 }
-.card {
-  display:flex;
-  width:1000px;
-  margin:50px auto;
-  border:10px solid black;
-  background-color:black;
-  height:500px;
 
-  }
-  .left {
-    width:40%;
-    height:auto;
-    float:left;
-  }
-  .right {
-    position:relative;
-    color:white;
-    width:60%;
-    float:left;
-    border-radius:0 10px 10px 0;
-  }
-
-  .image {
-      width:100%;
-      height:100%;
-      border-radius:10px 0 0 10px;
-      object-fit:contain;
-
-    }
-
-
-   h1 {
-    color:white;
-    font-family: 'Montserrat', sans-serif;
-    font-weight:400;
-    text-align:left;
-    font-size:40px;
-    margin:30px 0 0 0;
-    padding:0 0 0 40px;
-    letter-spacing:1px;
-   }
-  hr{
-    color:lightskyblue;
-    width:92%;
-  }
-
-  .movie-title{
-  text-decoration: none;
-  text-align: center;
-  justify-content: center;
-  font-size: 50px;
-  color:white;
-  }
-
-  .movie-image{
-    display:inline-block;
-    width: 100%;
-    height: 600px;
-    background-position: center;
-    background-size: cover;
-    float:left;
-  }
   .about{
     font-size:30px;
     color:white;
