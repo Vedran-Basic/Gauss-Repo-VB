@@ -14,7 +14,7 @@
         <pagination :total="data.totalResults"/>
       </div>
     </div>
-      <span class="movie-not-found" v-if="this.data.Response==='False'">{{ this.data.Error }} </span>
+      <span class="search-error" v-if="this.data.Response==='False'">{{ this.data.Error }} </span>
   </div>
 </template>
 
@@ -55,20 +55,8 @@
 </script>
 
 <style scoped>
-/*
-.searched-movies{
-    align-items: center;
-    justify-content: center;
-    overflow:visible;
-}
-*/
-.pagination{
-    display:inline-block;
-    align-items: center;
-    justify-content: center;
-    overflow:visible;
-}
-.movie-not-found{
+
+.search-error{
   display: block;
   text-align: center;
   font-family: "Times New Roman", Times, serif;
