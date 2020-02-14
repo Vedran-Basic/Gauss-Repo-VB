@@ -39,7 +39,7 @@
       }
     },
     props: {
-      pages:{
+      totalPages:{
         type: Number,
         required:true,
       }
