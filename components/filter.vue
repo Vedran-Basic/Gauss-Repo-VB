@@ -33,6 +33,15 @@ export default {
     methods:{
         ApplyFilters(){
             this.$emit('ApplyFilters', {genre:this.model, year:this.year})
+        },
+        resetTextFields(){
+            this.model='all'
+            this.year=''
+        }
+    },
+    watch:{
+        '$route.query.results':{
+            handler:'resetTextFields'
         }
     }
 }

@@ -66,7 +66,7 @@
         }
       },*/
     watch:{
-      '$route':{
+      $route:{
       handler: 'searchDatabase',
       deep: true
       },
@@ -78,6 +78,7 @@
       resetFilters(){
         this.year=''
         this.genre='all'
+        this.searchDatabase()
       },
       next (page) {
         if(page===1){
