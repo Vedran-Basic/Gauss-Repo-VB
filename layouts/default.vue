@@ -1,9 +1,9 @@
 <template>
-  <div>
+  <v-app style="background: none">
     <Header />
     <nuxt />
     <Footer />
-  </div>
+  </v-app>
 </template>
 
 <script>

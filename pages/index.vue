@@ -1,6 +1,5 @@
 <template>
   <div class="container">
-
     <section class="featured-movies">
       <movie-preview v-for="item in movies" :key="item.imdbID" :movies="item" @addToFavs="addToFavorites" @removeFromFavs="removeFromFavorites" />
     </section>
@@ -12,12 +11,12 @@
   export default {
     data(){
       return{
-        searchContent: this.$route.query.results,
+        searchContent: this.$route.query.results
         }
     },
     components: {
       MoviePreview
-    },
+      },
 
     async asyncData({ params, $axios }) {
       let { data } = await $axios.get('http://www.omdbapi.com/?apikey=dd5fbf0a&s=Batman')
@@ -30,8 +29,7 @@
       removeFromFavorites($event){
         this.$store.dispatch('favMovies/removeFromFavorites', $event)
       }
-    },
-
+    }
   }
 </script>
 

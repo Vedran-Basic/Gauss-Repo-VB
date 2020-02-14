@@ -1,11 +1,12 @@
 <template>
-    <div class="pagination">       
+    <div class="pagination">
       <v-pagination
         v-model="currentPage"
-        :length="lastPage"
-        :total-visible="7"
+        :length="pages"
+        :pages-visible="visible"
         @input="next"
       ></v-pagination>
+      
     </div>
 </template>
 
@@ -13,7 +14,8 @@
   export default {
     data(){
       return{
-        currentPage: Number(this.$route.query.pageNumber)
+        currentPage: Number(this.$route.query.pageNumber),
+        visible:7
       }
     },
     methods:{
@@ -26,17 +28,22 @@
           }
       }
     },
-    computed:{
-      lastPage(){
-      return Math.ceil(parseFloat(this.total)/10)
-      }
-    },
     mounted(){
       if(this.$route.query.pageNumber===undefined){      
         this.currentPage= 1
       }
     },
-    props: ['total']  //u _search/index.vue u komponentu dodajemo       <pagination :total="data.totalResults"/>
+    updated(){
+      if(this.$route.query.pageNumber==='flag'){
+
+      }
+    },
+    props: {
+      pages:{
+        type: Number,
+        required:true,
+      }
+    }  //u _search/index.vue u komponentu dodajemo       <pagination :pages="data.pagesResults"/>
   }
 </script>
 
