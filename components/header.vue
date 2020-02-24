@@ -27,7 +27,7 @@
                 </v-card>
               </nuxt-link>
             </v-col>
-            
+            <UserNav/>
           </v-row>
         </v-container>
       </nav>
@@ -51,7 +51,7 @@
 
 <script>
   import searchbar from "~/components/searchbar";
-
+  import UserNav from "~/components/userNav";
   export default {
     data(){
       return{
@@ -59,7 +59,7 @@
       }
     },
     components: {
-      searchbar
+      searchbar, UserNav
     },
     props: {
       searchContent: String,
