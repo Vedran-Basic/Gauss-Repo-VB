@@ -5,7 +5,6 @@
       <h1> Search results:</h1>
 
       <div class="pagination-div">
-        <!-- @input="next" staviti u vpagination -->
         <v-pagination
         v-model="currentPage"
         :length="pages"
@@ -17,7 +16,6 @@
         <movie-preview v-for="item in movieSearch" :key="item.imdbID" :movies="item" @addToFavs="addToFavorites" @removeFromFavs="removeFromFavorites"/>
       </section>
       <div class="pagination-div">
-        <!-- @input="next" staviti u vpagination -->
         <v-pagination
         v-model="currentPage"
         :length="pages"
@@ -51,20 +49,8 @@
       MoviePreview, pagination, FilterMovies
     },
    created(){
-     console.log("created")
      this.searchDatabase()
    },
-    /*async asyncData({ route, $axios }) {
-      if(route.query.pageNumber===undefined){
-        let pageNumber=1
-        let { data }= await $axios.get(`http://www.omdbapi.com/?apikey=dd5fbf0a&s=${route.query.results}&page=${pageNumber}&type=movie`)
-        return { data }
-        }
-      else{
-        let { data }= await $axios.get(`http://www.omdbapi.com/?apikey=dd5fbf0a&s=${route.query.results}&page=${route.query.pageNumber}&type=movie`)
-        return { data }
-        }
-      },*/
     watch:{
       $route:{
       handler: 'searchDatabase',

@@ -36,7 +36,9 @@
                :loading="isLoading"
                class="white--text"
                color="deep-purple accent-4"
-               depressed>Log in</v-btn>
+               depressed
+               @click="signUp"
+               >Sign up</v-btn>
       </v-card-actions>
       <v-dialog v-model="dialog"
                 absolute
@@ -67,16 +69,29 @@
           required: v => !!v || 'This field is required'
         }
       }
-
+    },
+    methods:{
+      async signUp(){
+        try{
+          const response = await this.$axios.post("http://127.0.0.1:3333/api/auth/register",
+            { email:this.email,
+              password:this.password
+            }
+          )
+          
+          console.log({response})
+        }
+        catch(err){
+          console.log(err)
+        }
+      }
     }
+    
   }
 </script>
 <style scoped>
 
   .login-card {
     align-self: center;
-  }
-
-  .v-card {
   }
 </style>
