@@ -73,21 +73,26 @@
     methods:{
       async signUp(){
         try{
-          const response = await this.$axios.post("http://127.0.0.1:3333/api/auth/register",
-            { email:this.email,
-              password:this.password
+          const config={
+            headers:{
+              'Content-Type':'application/json',
+              'Access-Control-Allow-Credentials': true,
+              'Access-Control-Allow-Origin':true
             }
-          )
-          
-          console.log({response})
+          }
+          const response = await this.$axios.$post('http://127.0.0.1:3333/api/auth/register', {
+            email:this.email,
+            password:this.password
+          })
         }
         catch(err){
           console.log(err)
         }
       }
-    }
+    
     
   }
+}
 </script>
 <style scoped>
 
