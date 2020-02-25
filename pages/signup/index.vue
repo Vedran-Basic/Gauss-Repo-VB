@@ -84,6 +84,7 @@
             email:this.email,
             password:this.password
           })
+          console.log(response)
         }
         catch(err){
           console.log(err)

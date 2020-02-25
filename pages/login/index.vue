@@ -31,7 +31,7 @@
       </v-form>
       <v-divider></v-divider>
       <v-card-actions>
-        <v-btn text @click="signUp">
+        <v-btn text to="/signup">
           Sign up
         </v-btn>
         <v-spacer></v-spacer>
@@ -39,7 +39,8 @@
                :loading="isLoading"
                class="white--text"
                color="deep-purple accent-4"
-               depressed>Log in</v-btn>
+               depressed
+               @click="login">Log in</v-btn>
       </v-card-actions>
       <v-dialog v-model="dialog"
                 absolute
@@ -72,24 +73,21 @@
       }
     },
     methods:{
-      async signUp(){
+      async login(){
         try{
-          const response = axios.create({
-            method: 'post',
-            url: 'http://127.0.0.1:3333/api/auth/register',
-            data:{
-	            "email":"wega.baso2",
-	            "password":"12345678"
-            }
-          });
-          console.log({response})
+          const response = await this.$axios.$post('http://127.0.0.1:3333/api/auth/login', {
+            email:this.email,
+            password:this.password
+          })
+          console.log(response)
         }
         catch(err){
           console.log(err)
-          this.error=error
         }
       }
-    }
+    
+    
+  }
   }
 </script>
 <style scoped>
