@@ -20,7 +20,7 @@
                       label="Email address"
                       type="email"></v-text-field>
         <v-text-field v-model="password"
-                      :rules="[rules.password, rules.length(8)]"
+                      :rules="[rules.password, rules.length(2)]"
                       filled
                       color="deep-purple"
                       label="Password"
@@ -65,7 +65,8 @@
         rules: {
           email: v => (v || '').match(/@/) || 'Please enter a valid email',
           length: len => v => (v || '').length >= len || `Invalid character length, required ${len}`,
-          password: v => (v || '').match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*(_|[^\w])).+$/) || 'Password must contain an upper case letter, a numeric character, and a special character',
+          password: v => (v || '').match(/^(?=.*[a-z])(?=.*[A-Z]).+$/) || 'At least one uppercase and lowercase letter required',
+          //password: v => (v || '').match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/) || 'Password must contain an upper case letter and a numeric character',
           required: v => !!v || 'This field is required'
         }
       }
